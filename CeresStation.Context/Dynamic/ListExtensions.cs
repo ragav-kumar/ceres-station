@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace CeresStation.Core;
 
@@ -27,24 +28,26 @@ public static class ListExtensions
             throw new InvalidOperationException($"fields don't correspond to properties in {elementType.Name}");
         }
 
+        Type dynamicType = DynamicTypeBuilder.GetDynamicType(selectedProperties);
+        
         // Construct the Select lambda
         ParameterExpression parameter = Expression.Parameter(elementType, "o");
-        
-        // the body of the RHS of the Select
+
+        // Create dictionary for dynamic object
         List<MemberAssignment> bindings = selectedProperties
-            .Select(p => Expression.Bind(p, Expression.Property(parameter, p.Name)))
+            .Select(o => Expression.Bind(dynamicType.GetProperty(o.Name)!, Expression.Property(parameter, o.Name)))
             .ToList();
         
-        // the whole of the RHS of the Select
-        MemberInitExpression newExpression = Expression.MemberInit(Expression.New(elementType), bindings);
+        MemberInitExpression newExpression = Expression.MemberInit(Expression.New(dynamicType), bindings);
         
         // o => new { o.Prop1, o.Prop2 }
         LambdaExpression lambda = Expression.Lambda(newExpression, parameter);
         
-        object? result = typeof(IQueryable)
+        // Create methodInfo for Select(), then call q.Select(lambda).
+        object? result = typeof(Queryable)
             .GetMethods()
             .First(m => m.Name == "Select" && m.GetParameters().Length == 2)
-            .MakeGenericMethod(elementType)
+            .MakeGenericMethod(elementType, dynamicType)
             .Invoke(null, [q, lambda]);
 
         if (result is null)

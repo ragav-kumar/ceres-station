@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CeresStation.Core;
 
-public partial class StationContext : DbContext
+public class StationContext : DbContext
 {
     public DbSet<Extractor> Extractors { get; set; }
     public DbSet<Resource> Resources { get; set; }

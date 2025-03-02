@@ -1,3 +1,3 @@
 ﻿namespace CeresStation.Dto;
 
-public class ListRowDto : Dictionary<string, object>;
+public class ListRowDto : Dictionary<string, object?>;

@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Reflection;
+using AutoMapper;
 using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
@@ -26,7 +27,8 @@ public class ListController
         return mapper.Map<IEnumerable<ColumnDto>>(ctx.Columns.Where(c => c.EntityType == entityType));
     }
 
-    public IEnumerable<ListDataDto> GetListData(string entityTypeName)
+    [HttpGet("{entityTypeName}")]
+    public ListDataDto GetListData(string entityTypeName)
     {
         EntityType entityType = Enum.Parse<EntityType>(entityTypeName);
         using StationContext ctx = new StationContext();
@@ -38,10 +40,26 @@ public class ListController
             .ToList();
         // Get raw data
         IQueryable query = ctx.GetQueryable(entityTypeName);
+        
         List<string> fieldNames = columns
             .Where(o => o.FieldType == FieldType.Model)
             .Select(o => o.FieldName!)
             .ToList();
         IQueryable cleanedQuery = query.ColumnSelect(fieldNames);
+        List<object> rows = cleanedQuery.Cast<object>().ToList();
+
+        ListDataDto data = new() { TotalCount = rows.Count, Rows = [] };
+        foreach (object row in rows)
+        {
+            ListRowDto rowDto = new();
+            foreach (PropertyInfo prop in row.GetType().GetProperties())
+            {
+                rowDto[prop.Name] = prop.GetValue(row);
+            }
+
+            data.Rows.Add(rowDto);
+        }
+        
+        return data;
     }
 }
