@@ -13,10 +13,7 @@ export const Table = ({entity}: TableProps) => {
 
     useEffect(() => {
         Api.List.GetData(entity).then(setData);
-        Api.List.GetColumns(entity).then(res => {
-            res.sort((a, b) => a.order - b.order);
-            setColumns(res);
-        });
+        Api.List.GetColumns(entity).then(setColumns);
     }, [entity]);
 
     console.log({ data, columns });

@@ -24,7 +24,11 @@ public class ListController
         EntityType entityType = ToEntityType(entityTypeName);
 
         using StationContext ctx = new();
-        return mapper.Map<IEnumerable<ColumnDto>>(ctx.Columns.Where(c => c.EntityType == entityType));
+        return mapper.Map<IEnumerable<ColumnDto>>(ctx
+            .Columns
+            .Where(c => c.EntityType == entityType)
+            .OrderBy(o => o.Order)
+        );
     }
 
     [HttpGet("{entityTypeName}")]
@@ -40,7 +44,7 @@ public class ListController
             .ToList();
         // Get raw data
         IQueryable query = ctx.GetQueryable(ToTableName(entityTypeName));
-        
+
         List<string> fieldNames = columns
             .Where(o => o.FieldType == FieldType.Model)
             .Select(o => o.FieldName!)
@@ -63,7 +67,7 @@ public class ListController
         string sortField = columns.MinBy(o => o.Order)!.FieldName!;
 
         data.Rows = data.Rows.OrderBy(o => o[sortField]).ToList();
-        
+
         return data;
     }
 
