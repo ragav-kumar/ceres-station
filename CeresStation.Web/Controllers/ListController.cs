@@ -21,17 +21,17 @@ public class ListController
     [HttpGet("{entityTypeName}/Columns")]
     public IEnumerable<ColumnDto> GetColumns(string entityTypeName)
     {
-        EntityType entityType = Enum.Parse<EntityType>(entityTypeName);
+        EntityType entityType = ToEntityType(entityTypeName);
 
-        using StationContext ctx = new StationContext();
+        using StationContext ctx = new();
         return mapper.Map<IEnumerable<ColumnDto>>(ctx.Columns.Where(c => c.EntityType == entityType));
     }
 
     [HttpGet("{entityTypeName}")]
     public ListDataDto GetListData(string entityTypeName)
     {
-        EntityType entityType = Enum.Parse<EntityType>(entityTypeName);
-        using StationContext ctx = new StationContext();
+        EntityType entityType = ToEntityType(entityTypeName);
+        using StationContext ctx = new();
 
         // Get all relevant columns
         List<Column> columns = ctx
@@ -39,7 +39,7 @@ public class ListController
             .Where(c => c.EntityType == entityType)
             .ToList();
         // Get raw data
-        IQueryable query = ctx.GetQueryable(entityTypeName);
+        IQueryable query = ctx.GetQueryable(ToTableName(entityTypeName));
         
         List<string> fieldNames = columns
             .Where(o => o.FieldType == FieldType.Model)
@@ -59,7 +59,35 @@ public class ListController
 
             data.Rows.Add(rowDto);
         }
+
+        string sortField = columns.MinBy(o => o.Order)!.FieldName!;
+
+        data.Rows = data.Rows.OrderBy(o => o[sortField]).ToList();
         
         return data;
+    }
+
+    private static EntityType ToEntityType(string entityTypeName)
+    {
+        return entityTypeName.ToLower() switch
+        {
+            "extractor" or "extractors" => EntityType.Extractor,
+            "processor" or "processors" => EntityType.Processor,
+            "transport" or "transports" => EntityType.Transport,
+            "consumer" or "consumers"   => EntityType.Consumer,
+            _                           => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
+        };
+    }
+
+    private static string ToTableName(string entityTypeName)
+    {
+        return entityTypeName.ToLower() switch
+        {
+            "extractor" or "extractors" => "Extractor",
+            "processor" or "processors" => "Processor",
+            "transport" or "transports" => "Transport",
+            "consumer" or "consumers"   => "Consumer",
+            _                           => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
+        };
     }
 }

@@ -22,11 +22,20 @@ export enum EntityType {
 }
 
 export interface ColumnDto {
-    Id: string;
-    EntityType: EntityType;
-    DisplayName?: string;
-    AttributeDefinitionId?: string;
-    FieldName?: string;
-    Width?: number;
-    Order: number;
+    id: string;
+    entityType: EntityType;
+    displayName?: string;
+    attributeDefinitionId?: string;
+    fieldName?: string;
+    width?: number;
+    order: number;
+}
+
+export interface ListRowDto {
+    [key: string]: unknown;
+}
+
+export interface ListDataDto {
+    rows: ListRowDto[];
+    totalCount: number;
 }

@@ -1,4 +1,4 @@
-import { ColumnDto, EntityType, ExtractorDto } from './dto.ts';
+import { ColumnDto, ExtractorDto, ListDataDto } from './dto.ts';
 
 /**
  * A generic GET method for fetching data from an API.
@@ -9,7 +9,7 @@ import { ColumnDto, EntityType, ExtractorDto } from './dto.ts';
  */
 const fetchData = async <T>(endpoint: string): Promise<T> => {
     try {
-        const response = await fetch(`/api/${endpoint}`, {
+        const response = await fetch(`http://localhost:5260/api/${endpoint}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,13 +30,11 @@ const fetchData = async <T>(endpoint: string): Promise<T> => {
 
 export const Api = {
     Extractors: {
-        Get: () => fetchData<ExtractorDto[]>('extractors'),
-        GetOne: (id: string) => fetchData<ExtractorDto>(`extractors/${id}`),
+        Get: () => fetchData<ExtractorDto[]>('Extractors'),
+        GetOne: (id: string) => fetchData<ExtractorDto>(`Extractors/${id}`),
     },
-    Columns: {
-        Get: (entityType: EntityType) => {
-            const entityTypeStr = entityType.toString();
-            return fetchData<ColumnDto[]>(`columns/${entityTypeStr}`);
-        },
+    List: {
+        GetData: (entityTypeName: string) => fetchData<ListDataDto>(`List/${entityTypeName}`),
+        GetColumns: (entityTypeName: string) => fetchData<ColumnDto[]>(`List/${entityTypeName}/Columns`),
     },
 };

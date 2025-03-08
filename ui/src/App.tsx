@@ -1,12 +1,8 @@
 import { Table } from 'components/Table';
-import styles from './App.module.css';
-import { Api, EntityType, ExtractorDto } from './api';
+// import styles from './App.module.css';
 
 export const App = () => (
-    <div className={styles.wrap}>
-        <Table<ExtractorDto>
-            fetchData={Api.Extractors.Get}
-            fetchColumns={() => Api.Columns.Get(EntityType.Extractor)}
-        />
-    </div>
+    // <div /*className={styles.wrap}*/>
+        <Table entity='Extractors' />
+    // </div>
 );
