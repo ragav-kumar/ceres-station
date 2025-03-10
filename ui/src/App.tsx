@@ -1,8 +1,14 @@
-import { Table } from 'components/Table';
-// import styles from './App.module.css';
+import { BrowserRouter } from 'react-router';
+import { Suspense } from 'react';
+import { AppRouting } from './entry/AppRouting';
+import { TitleProvider } from './entry/TitleContext';
 
 export const App = () => (
-    // <div /*className={styles.wrap}*/>
-        <Table entity='Extractors' />
-    // </div>
+    <Suspense fallback={<p>Loading...</p>}>
+        <BrowserRouter>
+            <TitleProvider>
+                <AppRouting />
+            </TitleProvider>
+        </BrowserRouter>
+    </Suspense>
 );

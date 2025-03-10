@@ -1,8 +1,9 @@
-import js from '@eslint/js'
-import globals from 'globals'
-import reactHooks from 'eslint-plugin-react-hooks'
-import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from 'typescript-eslint'
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+import stylisticTs from '@stylistic/eslint-plugin-ts';
 
 export default tseslint.config(
     {
@@ -21,6 +22,7 @@ export default tseslint.config(
         plugins: {
             'react-hooks': reactHooks,
             'react-refresh': reactRefresh,
+            '@stylistic/ts': stylisticTs,
         },
         rules: {
             ...reactHooks.configs.recommended.rules,
@@ -37,6 +39,7 @@ export default tseslint.config(
             // Always use arrow functions
             'prefer-arrow-callback': ['error'],
             'func-style': ['error', 'expression'],
+            '@stylistic/ts/quotes': ['error', 'single'],
         },
     },
-)
+);

@@ -9,7 +9,7 @@ import { ColumnDto, ExtractorDto, ListDataDto } from './dto.ts';
  */
 const fetchData = async <T>(endpoint: string): Promise<T> => {
     try {
-        const response = await fetch(`http://localhost:5260/api/${endpoint}`, {
+        const response = await fetch(`/api/${endpoint}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

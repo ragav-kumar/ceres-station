@@ -11,15 +11,21 @@
     "generate-sdk": "openapi-generator-cli"
   },
   "dependencies": {
+    "@vanilla-extract/css": "^1.17.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router": "^7.3.0",
+    "react-router-dom": "^7.3.0",
     "sass": "^1.85.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
     "@openapitools/openapi-generator-cli": "^2.16.3",
+    "@stylistic/eslint-plugin": "^4.2.0",
+    "@stylistic/eslint-plugin-ts": "^4.2.0",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
+    "@vanilla-extract/vite-plugin": "^5.0.1",
     "@vitejs/plugin-react": "^4.3.4",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
