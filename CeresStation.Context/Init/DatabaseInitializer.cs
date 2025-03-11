@@ -102,7 +102,41 @@ internal class DatabaseInitializer
 
     internal async Task Processors()
     {
-        // TODO
+        Resource water = ctx.Resources.Single(o => o.Name == "Water");
+        Resource hydrogen = ctx.Resources.Single(o => o.Name == "Hydrogen");
+        Resource oxygen = ctx.Resources.Single(o => o.Name == "Oxygen");
+        
+        ctx.Add(new Processor
+        {
+            Id = Guid.NewGuid(),
+            Name = "Water Electrolyzer",
+            TimeStep = 3.0f + (random.NextSingle() - 1.5f),
+            Inputs = [
+                new Reagent
+                {
+                    Id = Guid.NewGuid(),
+                    ResourceId = water.Id,
+                    Count = 1.0f,
+                    StockpileCapacity = 100.0f,
+                }
+            ],
+            Outputs = [
+                new Reagent
+                {
+                    Id = Guid.NewGuid(),
+                    ResourceId = hydrogen.Id,
+                    Count = 0.888f,
+                    StockpileCapacity = 100.0f,
+                },
+                new Reagent
+                {
+                    Id = Guid.NewGuid(),
+                    ResourceId = oxygen.Id,
+                    Count = 0.112f,
+                    StockpileCapacity = 100.0f,
+                }
+            ],
+        });
         await ctx.SaveChangesAsync();
     }
 

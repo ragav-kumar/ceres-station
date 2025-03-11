@@ -6,9 +6,9 @@ namespace CeresStation.Model;
 public class Reagent
 {
 	public Guid Id { get; set; }
-	public float Count { get; set; }
-	public float StockpileCapacity { get; set; }
+	public required float Count { get; set; }
+	public required float StockpileCapacity { get; set; }
 	
-	public Guid ResourceId { get; set; }
+	public required Guid ResourceId { get; set; }
 	public virtual Resource Resource { get; set; }
 }
