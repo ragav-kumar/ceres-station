@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ColumnDto, ListDataDto } from 'api/dto.ts';
 import { Api } from 'api/sdk.ts';
 import { Row } from './Row.tsx';
-import { tableStyle, tableWrapperStyle } from './Table.css.ts';
+import styles from './Table.module.css';
 
 interface TableProps {
     entity: string;
@@ -24,8 +24,8 @@ export const Table = ({entity}: TableProps) => {
     }
 
     return (
-        <div className={tableWrapperStyle}>
-            <table className={tableStyle}>
+        <div className={styles.wrap}>
+            <table className={styles.table}>
                 <thead>
                 <tr>
                     {columns.map((column, index) => (

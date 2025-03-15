@@ -1,0 +1,42 @@
+
+.top-nav {
+    display: flex;
+    column-gap: .5rem;
+    padding: .25rem .5rem;
+    border-bottom: 1px solid #777;
+}
+
+.nav-link {
+    padding: .25rem .75rem;
+    color: CanvasText;
+
+    &.active {
+        background-color: #747bff;
+
+        &:hover {
+            color: CanvasText;
+            background-color: cornflowerblue;
+        }
+    }
+
+    &.inactive {
+        background-color: transparent;
+
+        &:hover {
+            color: CanvasText;
+            background-color: darkslateblue;
+        }
+    }
+}
+
+.side-nav {
+    border-right: 1px solid #777;
+    padding: .5rem;
+
+    li {
+        list-style-type: none;
+        margin-left: 0;
+        font-style: italic;
+        padding: .5rem;
+    }
+}

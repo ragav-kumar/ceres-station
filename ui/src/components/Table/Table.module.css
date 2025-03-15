@@ -1,0 +1,36 @@
+.table {
+    margin: 1rem;
+    border-collapse: collapse;
+    width: max-content;
+    min-width: calc(100% - 2rem);
+
+    /*Bottom border on heading row*/
+    thead th {
+        border-bottom: 1px solid #ddd;
+        padding: 0 .5rem;
+    }
+
+    tbody:before {
+        content: '@';
+        display: block;
+        line-height: .5rem;
+        text-indent: -99999px;
+    }
+}
+
+.cell {
+    text-align: center;
+    text-overflow: ellipsis;
+    height: 1em;
+}
+
+.row {
+    height: auto;
+    white-space: nowrap;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
