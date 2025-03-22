@@ -9,6 +9,8 @@ internal partial class DatabaseInitializer
     private readonly Guid waterElectrolyzerReagentHydrogenId = new("FB110386-3BBF-4C70-BB1C-46A05FAD84C5");
     private readonly Guid waterElectrolyzerReagentOxygenId = new("74AB4B64-6F7F-470E-AF72-E2A8FEC22F29");
     
+    private readonly Position waterElectrolyzerPosition = new(-200.0e3, 0, 50.0e3);
+    
     internal async Task Processors()
     {
         ctx.Add(new Processor
@@ -16,6 +18,7 @@ internal partial class DatabaseInitializer
             Id = waterElectrolyzerId,
             Name = "Water Electrolyzer",
             TimeStep = RandomAround(3.0f),
+            Position = waterElectrolyzerPosition,
             Inputs = [
                 new Reagent
                 {

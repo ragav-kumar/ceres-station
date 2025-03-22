@@ -4,6 +4,8 @@ namespace CeresStation.Core.Init;
 
 internal partial class DatabaseInitializer
 {
+    private readonly Position ceresHabitatPosition = Position.Origin;
+    
     private readonly StationContext ctx;
     private readonly Random random = new(1);
 

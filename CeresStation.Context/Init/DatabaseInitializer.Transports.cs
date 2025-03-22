@@ -92,10 +92,14 @@ internal partial class DatabaseInitializer
 
     private void AddTransport(string transportName, Guid transportId, Guid resourceId, Guid sourceId, Guid destinationId)
     {
+        EntityBase source = ctx.Entities.Single(o => o.Id == sourceId);
+        Position sourcePosition = source.Position;
+        
         ctx.Add(new Transport
         {
             Id = transportId,
             Name = transportName,
+            Position = sourcePosition,
             SourceId = sourceId,
             DestinationId = destinationId,
             ResourceId = resourceId,

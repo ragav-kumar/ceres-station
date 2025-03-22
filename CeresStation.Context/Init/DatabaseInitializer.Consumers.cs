@@ -9,16 +9,18 @@ internal partial class DatabaseInitializer
     private readonly Guid hydrogenVentId = new("B68C83DF-2B42-4797-916E-CE4E15DB63D4");
     private readonly Guid powerStationFuelId = new("C24D2022-D642-45FD-BEB7-300FEBBBE179");
     private readonly Guid powerStationOxidizerId = new("EDE4A193-EBBF-4A36-8104-3F15EF6BC00C");
+
+    private readonly Position powerStationPosition = new(0, 150.0e3, 0);
     
     internal async Task Consumers()
     {
-        AddConsumer("Habitat air supply", habitatAirSupplyId, oxygenId, RandomAround(1.0f));
-        AddConsumer("Habitat water supply", habitatWaterSupplyId, waterId, RandomAround(1.0f));
-        AddConsumer("Hydrogen vent", hydrogenVentId, hydrogenId, RandomAround(10.0f));
+        AddConsumer("Habitat air supply", habitatAirSupplyId, oxygenId, RandomAround(1.0f), ceresHabitatPosition);
+        AddConsumer("Habitat water supply", habitatWaterSupplyId, waterId, RandomAround(1.0f), ceresHabitatPosition);
+        AddConsumer("Hydrogen vent", hydrogenVentId, hydrogenId, RandomAround(10.0f), ceresHabitatPosition);
         
         float powerInput = RandomAround(1.0f);
-        AddConsumer("Power station - Fuel", powerStationFuelId, hydrogenId, 0.111f * powerInput);
-        AddConsumer("Power station - Oxidizer", powerStationOxidizerId, oxygenId, 0.888f * powerInput);
+        AddConsumer("Power station - Fuel", powerStationFuelId, hydrogenId, 0.111f * powerInput, powerStationPosition);
+        AddConsumer("Power station - Oxidizer", powerStationOxidizerId, oxygenId, 0.888f * powerInput, powerStationPosition);
         
         await ctx.SaveChangesAsync();
         
@@ -73,7 +75,7 @@ internal partial class DatabaseInitializer
         await ctx.SaveChangesAsync();
     }
 
-    private void AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate)
+    private void AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate, Position position)
     {
         ctx.Add(new Consumer
         {
@@ -84,6 +86,7 @@ internal partial class DatabaseInitializer
             StandardDeviation = RandomAround(0.1f),
             Stockpile = 0.0f,
             Capacity = RandomAround(100.0f),
+            Position = position
         });
     }
 }

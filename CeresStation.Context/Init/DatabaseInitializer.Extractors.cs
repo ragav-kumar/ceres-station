@@ -8,13 +8,18 @@ internal partial class DatabaseInitializer
     private readonly Guid copperMineId = new("302B5BD0-4654-4E78-86DF-0BBD435ACBFA");
     private readonly Guid rockQuarryId = new("FA5DD16B-D83E-48FF-9154-94904EC79371");
     private readonly Guid iceMineId = new("25F425F6-8B5D-43CD-8B77-1FD4CE3904B3");
+
+    private readonly Position ironMinePosition = new(1.8e9, 3.2e9, 0.3e9);
+    private readonly Position copperMinePosition = new(-2.0e9, -2.6e9, -0.1e9);
+    private readonly Position rockQuarryPosition = new(4.9e9, 0.5e9, 0.0e9);
+    private readonly Position iceMinePosition = new(0.0e9, -4.0e9, 0.2e9);
     
     internal async Task Extractors()
     {
-        AddExtractor("Iron Mine", ironMineId, ironId);
-        AddExtractor("Copper Mine", copperMineId, copperId);
-        AddExtractor("Rock Quarry", rockQuarryId, silicatesId);
-        AddExtractor("Ice Mine", iceMineId, waterId);
+        AddExtractor("Iron Mine", ironMineId, ironId, ironMinePosition);
+        AddExtractor("Copper Mine", copperMineId, copperId, copperMinePosition);
+        AddExtractor("Rock Quarry", rockQuarryId, silicatesId, rockQuarryPosition);
+        AddExtractor("Ice Mine", iceMineId, waterId, iceMinePosition);
         await ctx.SaveChangesAsync();
 
         // Initialize List columns
@@ -68,7 +73,7 @@ internal partial class DatabaseInitializer
         await ctx.SaveChangesAsync();
     }
 
-    private void AddExtractor(string extractorName, Guid extractorId, Guid resourceId)
+    private void AddExtractor(string extractorName, Guid extractorId, Guid resourceId, Position position)
     {
         ctx.Add(new Extractor
         {
@@ -79,6 +84,7 @@ internal partial class DatabaseInitializer
             StandardDeviation = RandomAround(0.1f),
             Stockpile = 0.0f,
             Capacity = RandomAround(100.0f),
+            Position = position,
         });
     }
 }

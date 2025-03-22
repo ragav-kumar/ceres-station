@@ -12,4 +12,6 @@ public abstract class EntityBase
 	
 	[MaxLength(100)]
 	public required string Name { get; set; }
+	
+	public required Position Position { get; set; }
 }
