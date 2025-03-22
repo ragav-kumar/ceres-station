@@ -12,6 +12,8 @@ public class StationContext : DbContext
     public DbSet<Column> Columns { get; set; }
     public DbSet<Processor> Processors { get; set; }
     public DbSet<Reagent> Reagents { get; set; }
+    public DbSet<Consumer> Consumers { get; set; }
+    public DbSet<Transport> Transports { get; set; }
 
     public string DbPath { get; set; }
 
