@@ -52,7 +52,7 @@ public class ListController
         IQueryable cleanedQuery = query.ColumnSelect(fieldNames);
         List<object> rows = cleanedQuery.Cast<object>().ToList();
 
-        ListDataDto data = new() { TotalCount = rows.Count, Rows = [] };
+        List<ListRowDto> rowDtos = [];
         foreach (object row in rows)
         {
             ListRowDto rowDto = new();
@@ -61,14 +61,17 @@ public class ListController
                 rowDto[prop.Name] = prop.GetValue(row);
             }
 
-            data.Rows.Add(rowDto);
+            rowDtos.Add(rowDto);
         }
 
         string sortField = columns.MinBy(o => o.Order)!.FieldName!;
 
-        data.Rows = data.Rows.OrderBy(o => o[sortField]).ToList();
+        rowDtos = rowDtos.OrderBy(o => o[sortField]).ToList();
 
-        return data;
+        return new ListDataDto(
+            Rows: rowDtos,
+            TotalCount: rows.Count
+        );
     }
 
     private static EntityType ToEntityType(string entityTypeName)

@@ -5,7 +5,6 @@ namespace CeresStation.Model;
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
 public class Transport : EntityBase
 {
-    public required float TripTime { get; set; }
     public required float TripTimeStandardDeviation { get; set; }
     public required float CurrentCargo { get; set; }
     public required float Capacity { get; set; }
