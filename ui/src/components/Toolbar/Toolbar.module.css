@@ -1,0 +1,10 @@
+.wrap {
+    width: 100%;
+}
+
+.button {
+    /*TODO*/
+    &.active {
+        /*TODO*/
+    }
+}

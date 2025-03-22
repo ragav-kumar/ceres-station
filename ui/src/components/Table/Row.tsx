@@ -1,6 +1,6 @@
 import { ColumnDto, ListRowDto } from 'api/dto.ts';
 import { ReactNode } from 'react';
-import { cellStyle, rowStyle } from './Table.css.ts';
+import styles from './Table.module.css';
 
 interface RowProps {
     row: ListRowDto;
@@ -12,7 +12,7 @@ export const Row = ({row, columns}: RowProps) => {
     for (const column of columns) {
         if (column.fieldName) {
             cells.push(
-                <td key={column.fieldName} className={cellStyle} style={{ width: column.width }}>
+                <td key={column.fieldName} className={styles.cell} style={{ width: column.width }}>
                     {row[column.fieldName] as ReactNode}
                 </td>,
             );
@@ -20,7 +20,7 @@ export const Row = ({row, columns}: RowProps) => {
     }
 
     return (
-        <tr className={rowStyle}>
+        <tr className={styles.row}>
             {cells}
         </tr>
     );

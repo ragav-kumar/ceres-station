@@ -1,11 +1,11 @@
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
 import { AppLayout } from './AppLayout';
-import { GenericListPage } from '../pages/GenericListPage';
+import { GenericListPage } from 'pages/GenericListPage';
 
 export const AppRouting = () => (
     <Routes>
         <Route element={<AppLayout />}>
-            <Route path='/' element={<>TODO</>} />
+            <Route path='/' element={<Navigate to='/extractors' />} />
             <Route path='extractors'>
                 <Route index element={<GenericListPage entity='Extractors' />} />
             </Route>

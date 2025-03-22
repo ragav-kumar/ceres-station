@@ -1,10 +1,10 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface TitleContextType {
     set: (title: string) => void;
 }
 
-const TitleContext = createContext<TitleContextType | undefined>(undefined);
+export const TitleContext = createContext<TitleContextType | undefined>(undefined);
 
 export const useTitle = (newTitle: string) => {
     const context = useContext(TitleContext);
@@ -14,19 +14,3 @@ export const useTitle = (newTitle: string) => {
     context.set(newTitle);
 };
 
-const baseTitle = 'Ceres Station';
-
-export const TitleProvider = ({ children }: { children: ReactNode }) => {
-    const [title, setTitle] = useState<string>(baseTitle);
-
-    const set = (newTitle: string) => {
-        setTitle(`${baseTitle} - ${newTitle}`);
-    };
-
-    return (
-        <TitleContext value={{ set }}>
-            <title>{title}</title>
-            {children}
-        </TitleContext>
-    );
-};

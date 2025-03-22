@@ -1,0 +1,39 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: auto;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+:global(#root) {
+    height: 100%;
+    width: 100%;
+}
+
+.app-layout {
+    display: grid;
+    grid-template-columns: 15rem auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+            'top top'
+            'left content';
+    height: 100%;
+    width: 100%;
+    row-gap: 0;
+    > * {
+        margin: 0;
+    }
+}
+
+.content-area {
+    grid-area: content;
+}
+
+.top-area {
+    grid-area: top;
+}
+
+.left-area {
+    grid-area: left;
+}
