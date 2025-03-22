@@ -13,6 +13,7 @@ internal partial class DatabaseInitializer
     
     internal async Task Processors()
     {
+        Console.WriteLine("Adding Processor: Water Electrolyzer");
         ctx.Add(new Processor
         {
             Id = waterElectrolyzerId,

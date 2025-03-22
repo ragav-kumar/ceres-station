@@ -75,6 +75,7 @@ internal partial class DatabaseInitializer
 
     private void AddExtractor(string extractorName, Guid extractorId, Guid resourceId, Position position)
     {
+        Console.WriteLine($"Adding extractor: {extractorName}");
         ctx.Add(new Extractor
         {
             Id = extractorId,

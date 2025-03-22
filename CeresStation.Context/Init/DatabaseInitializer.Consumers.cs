@@ -77,6 +77,7 @@ internal partial class DatabaseInitializer
 
     private void AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate, Position position)
     {
+        Console.WriteLine($"Adding consumer: {consumerName}");
         ctx.Add(new Consumer
         {
             Id = id,
