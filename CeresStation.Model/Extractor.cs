@@ -8,6 +8,7 @@ namespace CeresStation.Model;
 /// </summary>
 
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public class Extractor : EntityBase
 {
     public required float ExtractionRate { get; set; }

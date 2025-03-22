@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CeresStation.Model;
 
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 [PrimaryKey(nameof(EntityId), nameof(DefinitionId))]
 public class EntityAttribute
 {

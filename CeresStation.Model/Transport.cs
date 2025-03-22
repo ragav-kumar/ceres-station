@@ -3,6 +3,7 @@
 namespace CeresStation.Model;
 
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public class Transport : EntityBase
 {
     public required float TripTimeStandardDeviation { get; set; }

@@ -3,6 +3,7 @@
 namespace CeresStation.Model;
 
 [SuppressMessage("ReSharper", "ClassWithVirtualMembersNeverInherited.Global")]
+[SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public class Consumer : EntityBase
 {
     public required float ConsumptionRate { get; set; }
