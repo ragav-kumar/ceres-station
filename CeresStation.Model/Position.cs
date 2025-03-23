@@ -2,7 +2,6 @@
 
 namespace CeresStation.Model;
 
-[Owned]
 public class Position
 {
     public double X { get; set; }
@@ -18,6 +17,13 @@ public class Position
         X = x;
         Y = y;
         Z = z;
+    }
+
+    public Position(Position position)
+    {
+        X = position.X;
+        Y = position.Y;
+        Z = position.Z;
     }
     
     public static Position Origin => new(0, 0, 0); 

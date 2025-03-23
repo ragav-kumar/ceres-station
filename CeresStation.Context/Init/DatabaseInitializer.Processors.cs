@@ -19,7 +19,7 @@ internal partial class DatabaseInitializer
             Id = waterElectrolyzerId,
             Name = "Water Electrolyzer",
             TimeStep = RandomAround(3.0f),
-            Position = waterElectrolyzerPosition,
+            Position = new Position(waterElectrolyzerPosition),
             Inputs = [
                 new Reagent
                 {

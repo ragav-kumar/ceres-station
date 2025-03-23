@@ -16,11 +16,10 @@ internal partial class DatabaseInitializer
     
     internal async Task Extractors()
     {
-        AddExtractor("Iron Mine", ironMineId, ironId, ironMinePosition);
-        AddExtractor("Copper Mine", copperMineId, copperId, copperMinePosition);
-        AddExtractor("Rock Quarry", rockQuarryId, silicatesId, rockQuarryPosition);
-        AddExtractor("Ice Mine", iceMineId, waterId, iceMinePosition);
-        await ctx.SaveChangesAsync();
+        await AddExtractor("Iron Mine", ironMineId, ironId, ironMinePosition);
+        await AddExtractor("Copper Mine", copperMineId, copperId, copperMinePosition);
+        await AddExtractor("Rock Quarry", rockQuarryId, silicatesId, rockQuarryPosition);
+        await AddExtractor("Ice Mine", iceMineId, waterId, iceMinePosition);
 
         // Initialize List columns
         ctx.AddRange(
@@ -73,7 +72,7 @@ internal partial class DatabaseInitializer
         await ctx.SaveChangesAsync();
     }
 
-    private void AddExtractor(string extractorName, Guid extractorId, Guid resourceId, Position position)
+    private async Task AddExtractor(string extractorName, Guid extractorId, Guid resourceId, Position position)
     {
         Console.WriteLine($"Adding extractor: {extractorName}");
         ctx.Add(new Extractor
@@ -85,7 +84,8 @@ internal partial class DatabaseInitializer
             StandardDeviation = RandomAround(0.1f),
             Stockpile = 0.0f,
             Capacity = RandomAround(100.0f),
-            Position = position,
+            Position = new Position(position),
         });
+        await ctx.SaveChangesAsync();
     }
 }

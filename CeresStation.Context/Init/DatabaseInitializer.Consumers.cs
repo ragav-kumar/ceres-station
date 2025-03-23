@@ -14,15 +14,13 @@ internal partial class DatabaseInitializer
     
     internal async Task Consumers()
     {
-        AddConsumer("Habitat air supply", habitatAirSupplyId, oxygenId, RandomAround(1.0f), ceresHabitatPosition);
-        AddConsumer("Habitat water supply", habitatWaterSupplyId, waterId, RandomAround(1.0f), ceresHabitatPosition);
-        AddConsumer("Hydrogen vent", hydrogenVentId, hydrogenId, RandomAround(10.0f), ceresHabitatPosition);
+        await AddConsumer("Habitat air supply", habitatAirSupplyId, oxygenId, RandomAround(1.0f), ceresHabitatPosition);
+        await AddConsumer("Habitat water supply", habitatWaterSupplyId, waterId, RandomAround(1.0f), ceresHabitatPosition);
+        await AddConsumer("Hydrogen vent", hydrogenVentId, hydrogenId, RandomAround(10.0f), ceresHabitatPosition);
         
         float powerInput = RandomAround(1.0f);
-        AddConsumer("Power station - Fuel", powerStationFuelId, hydrogenId, 0.111f * powerInput, powerStationPosition);
-        AddConsumer("Power station - Oxidizer", powerStationOxidizerId, oxygenId, 0.888f * powerInput, powerStationPosition);
-        
-        await ctx.SaveChangesAsync();
+        await AddConsumer("Power station - Fuel", powerStationFuelId, hydrogenId, 0.111f * powerInput, powerStationPosition);
+        await AddConsumer("Power station - Oxidizer", powerStationOxidizerId, oxygenId, 0.888f * powerInput, powerStationPosition);
         
         // Initialize List columns
         ctx.AddRange(
@@ -75,7 +73,7 @@ internal partial class DatabaseInitializer
         await ctx.SaveChangesAsync();
     }
 
-    private void AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate, Position position)
+    private async Task AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate, Position position)
     {
         Console.WriteLine($"Adding consumer: {consumerName}");
         ctx.Add(new Consumer
@@ -87,7 +85,8 @@ internal partial class DatabaseInitializer
             StandardDeviation = RandomAround(0.1f),
             Stockpile = 0.0f,
             Capacity = RandomAround(100.0f),
-            Position = position
+            Position = new Position(position)
         });
+        await ctx.SaveChangesAsync();
     }
 }

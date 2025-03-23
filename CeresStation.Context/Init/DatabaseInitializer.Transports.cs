@@ -13,13 +13,12 @@ internal partial class DatabaseInitializer
     
     internal async Task Transports()
     {
-        AddTransport("Electrolyzer Water supply shuttle", iceMineToElectrolyzerId, waterId, iceMineId, waterElectrolyzerId);
-        AddTransport("Habitat Water supply shuttle", iceMineToHabitatId, waterId, iceMineId, habitatWaterSupplyId);
-        AddTransport("Habitat Oxygen supply shuttle", electrolyzerToHabitatOxygenId, oxygenId, waterElectrolyzerId, habitatAirSupplyId);
-        AddTransport("Power station Oxidizer supply shuttle", electrolyzerToPowerOxygenId, oxygenId, waterElectrolyzerId, powerStationOxidizerId);
-        AddTransport("Power station Fuel supply shuttle", electrolyzerToPowerHydrogenId, hydrogenId, waterElectrolyzerId, powerStationFuelId);
-        AddTransport("Hydrogen disposal conduit", electrolyzerToHydrogenVentId, hydrogenId, waterElectrolyzerId, hydrogenVentId);
-        await ctx.SaveChangesAsync();
+        await AddTransport("Electrolyzer Water supply shuttle", iceMineToElectrolyzerId, waterId, iceMineId, waterElectrolyzerId);
+        await AddTransport("Habitat Water supply shuttle", iceMineToHabitatId, waterId, iceMineId, habitatWaterSupplyId);
+        await AddTransport("Habitat Oxygen supply shuttle", electrolyzerToHabitatOxygenId, oxygenId, waterElectrolyzerId, habitatAirSupplyId);
+        await AddTransport("Power station Oxidizer supply shuttle", electrolyzerToPowerOxygenId, oxygenId, waterElectrolyzerId, powerStationOxidizerId);
+        await AddTransport("Power station Fuel supply shuttle", electrolyzerToPowerHydrogenId, hydrogenId, waterElectrolyzerId, powerStationFuelId);
+        await AddTransport("Hydrogen disposal conduit", electrolyzerToHydrogenVentId, hydrogenId, waterElectrolyzerId, hydrogenVentId);
         
         // Initialize List columns
         ctx.AddRange(
@@ -90,7 +89,7 @@ internal partial class DatabaseInitializer
         await ctx.SaveChangesAsync();
     }
 
-    private void AddTransport(string transportName, Guid transportId, Guid resourceId, Guid sourceId, Guid destinationId)
+    private async Task AddTransport(string transportName, Guid transportId, Guid resourceId, Guid sourceId, Guid destinationId)
     {
         Console.WriteLine($"Adding transport: {transportName}");
         
@@ -101,7 +100,7 @@ internal partial class DatabaseInitializer
         {
             Id = transportId,
             Name = transportName,
-            Position = sourcePosition,
+            Position = new Position(sourcePosition),
             SourceId = sourceId,
             DestinationId = destinationId,
             ResourceId = resourceId,
@@ -109,5 +108,6 @@ internal partial class DatabaseInitializer
             Capacity = RandomAround(50.0f),
             TripTimeStandardDeviation = RandomAround(0.1f)
         });
+        await ctx.SaveChangesAsync();
     }
 }
