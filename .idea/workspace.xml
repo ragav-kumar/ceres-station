@@ -5,31 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Nav/Nav.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Nav/SideNav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Nav/TopNav.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Nav/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Toolbar/Toolbar.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Toolbar/Toolbar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Toolbar/ToolbarItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/components/Toolbar/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/entry/App.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/entry/TitleProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.CeresStation/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CeresStation/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.http" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Model/GeneralSetting.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/SettingsExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/.npmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CereStation.Core/CereStation.Core.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CereStation.Core/IStationContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Extractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Extractor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.css.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/entry/App.css.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/entry/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/AppLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/entry/AppRouting.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/AppRouting.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/entry/NavItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Nav/NavItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/entry/TitleContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/TitleContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,33 +52,35 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/repos/ceres-station&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.TypeScript&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;D:\\repos\\ceres-station\\ui\\node_modules\\typescript\\lib&quot;,
-    &quot;typescript.add.unambiguous.imports.on.the.fly&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/ceres-station",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "npm.install-clean.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "D:\\repos\\ceres-station\\ui\\node_modules\\typescript\\lib",
+    "typescript.add.unambiguous.imports.on.the.fly": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\repos\ceres-station\ui\src\components\Toolbar" />
       <recent name="D:\repos\ceres-station\ui\src\components\Nav" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.install-clean">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/ui/package.json" />
       <command value="run" />
@@ -100,8 +91,19 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="install-clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ui/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="install-clean" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.install-clean" />
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
@@ -109,7 +111,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-WS-243.26053.12" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-WS-241.18034.50" />
       </set>
     </attachedChunks>
   </component>
@@ -122,10 +124,14 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
+      <workItem from="1742688813252" duration="1756000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

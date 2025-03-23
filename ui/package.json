@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "install-clean": "npm i --userconfig \"./.npmrc\"",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",

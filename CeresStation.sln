@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeresStation.Dto", "CeresSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeresStation.Model", "CeresStation.Model\CeresStation.Model.csproj", "{5B38A129-1DD7-4288-B279-208F6848763A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CereStation.Core", "CereStation.Core\CereStation.Core.csproj", "{9F90ECEE-2DF9-4A30-8951-D3666DEFE4E3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{5B38A129-1DD7-4288-B279-208F6848763A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B38A129-1DD7-4288-B279-208F6848763A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B38A129-1DD7-4288-B279-208F6848763A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F90ECEE-2DF9-4A30-8951-D3666DEFE4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F90ECEE-2DF9-4A30-8951-D3666DEFE4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F90ECEE-2DF9-4A30-8951-D3666DEFE4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F90ECEE-2DF9-4A30-8951-D3666DEFE4E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,21 +9,15 @@ namespace CeresStation.Web.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ListController
+public class ListController(IMapper mapper)
 {
-    private readonly IMapper mapper;
-
-    public ListController(IMapper mapper)
-    {
-        this.mapper = mapper;
-    }
-
     [HttpGet("{entityTypeName}/Columns")]
     public IEnumerable<ColumnDto> GetColumns(string entityTypeName)
     {
         EntityType entityType = ToEntityType(entityTypeName);
 
         using StationContext ctx = new();
+        
         return mapper.Map<IEnumerable<ColumnDto>>(ctx
             .Columns
             .Where(c => c.EntityType == entityType)

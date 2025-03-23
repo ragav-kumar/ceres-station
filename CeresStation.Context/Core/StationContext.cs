@@ -15,6 +15,7 @@ public class StationContext : DbContext
     public DbSet<Consumer> Consumers { get; set; }
     public DbSet<Transport> Transports { get; set; }
     public DbSet<EntityBase> Entities { get; set; }
+    public DbSet<GeneralSetting> Settings { get; set; }
 
     public string DbPath { get; set; }
 

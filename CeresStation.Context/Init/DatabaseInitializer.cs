@@ -14,5 +14,15 @@ internal partial class DatabaseInitializer
         ctx = context;
     }
 
+    public async Task Settings()
+    {
+        ctx.Add(new GeneralSetting
+        {
+            Id = Guid.Empty,
+            Money = 1_000_000
+        });
+        await ctx.SaveChangesAsync();
+    }
+
     private float RandomAround(float mean) => mean * (0.5f + random.NextSingle());
 }

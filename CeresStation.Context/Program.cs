@@ -15,6 +15,8 @@ await ctx.Database.EnsureDeletedAsync();
 Console.WriteLine("Recreating database...");
 await ctx.Database.EnsureCreatedAsync();
 
+Console.WriteLine("Initializing settings...");
+await initialize.Settings();
 Console.WriteLine("Initializing resources...");
 await initialize.Resources();
 Console.WriteLine("Initializing extractors...");
