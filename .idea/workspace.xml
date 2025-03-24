@@ -5,20 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CeresStation.Model/GeneralSetting.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/SettingsExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/.npmrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CereStation.Core/CereStation.Core.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CereStation.Core/IStationContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Extractor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Extractor.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Dto/ProcessorDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Dto/ReagentDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/SettingsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/ExtractorDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/ExtractorDto.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.sln" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Extensions/ExtractorExtensions.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +64,7 @@
     "npm.dev.executor": "Run",
     "npm.install-clean.executor": "Run",
     "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
-    "ts.external.directory.path": "D:\\repos\\ceres-station\\ui\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "typescript.add.unambiguous.imports.on.the.fly": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -124,7 +119,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="1756000" />
+      <workItem from="1742688813252" duration="2493000" />
     </task>
     <servers />
   </component>

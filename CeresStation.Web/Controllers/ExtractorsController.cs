@@ -2,40 +2,46 @@
 using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
-using CeresStation.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace CeresStation.Web.Controllers;
 
-[ApiController]
 [Route("api/[controller]")]
-public class ExtractorsController(IMapper mapper) : ControllerBase
+public class ExtractorsController(IMapper mapper) : CrudController<Extractor, ExtractorDto>(mapper)
 {
-    [HttpGet]
-    public IEnumerable<ExtractorDto> Get()
+    protected override Extractor NewModel() => new()
     {
-        using StationContext ctx = new();
-        return mapper.Map<IEnumerable<ExtractorDto>>(ctx.Extractors);
+        Id = Guid.NewGuid(),
+        Name = "New Extractor",
+        Capacity = 0,
+        Stockpile = 0,
+        ResourceId = Guid.Empty,
+        Position = Position.Origin,
+        ExtractionRate = 0,
+        StandardDeviation = 0,
+    };
+
+    protected override void ApplyDto(Extractor model, ExtractorDto dto, StationContext _)
+    {
+        // Intentionally skip dto.Id.
+
+        if (dto.Name is not null)
+            model.Name = dto.Name;
+        if (dto.Capacity is not null)
+            model.Capacity = dto.Capacity.Value;
+        if (dto.Stockpile is not null)
+            model.Stockpile = dto.Stockpile.Value;
+        if (dto.Resource is not null)
+            model.ResourceId = dto.Resource.Id;
+        if (dto.Position is not null)
+            model.Position = new Position(dto.Position);
+        if (dto.ExtractionRate is not null)
+            model.ExtractionRate = dto.ExtractionRate.Value;
+        if (dto.StandardDeviation is not null)
+            model.StandardDeviation = dto.StandardDeviation.Value;
     }
 
-    [HttpGet("{id:guid}")]
-    public ExtractorDto Get(Guid id)
-    {
-        using StationContext ctx = new();
-        return mapper.Map<ExtractorDto>(ctx.Extractors.Single(o => o.Id == id));
-    }
+    protected override Guid GetId(Extractor model) => model.Id;
 
-    [HttpPost]
-    public async Task<ExtractorDto> Create(ExtractorDto dto)
-    {
-        await using StationContext ctx = new();
-
-        Extractor extractor = dto.ToNewModel(ctx);
-        Guid extractorId = extractor.Id;
-        ctx.Extractors.Add(extractor);
-        await ctx.SaveChangesAsync();
-        
-        return mapper.Map<ExtractorDto>(ctx.Extractors.Single(o => o.Id == extractorId));
-    }
+    protected override Extractor? GetFromId(StationContext ctx, Guid id) => ctx.Extractors.SingleOrDefault(e => e.Id == id);
 }

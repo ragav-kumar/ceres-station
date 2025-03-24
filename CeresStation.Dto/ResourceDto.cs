@@ -2,5 +2,5 @@
 
 public record ResourceDto(
 	Guid Id,
-	string Name
+	string? Name
 );
