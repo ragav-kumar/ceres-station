@@ -23,9 +23,10 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
     "baseUrl": "src",
     "paths": {
-      "api/*": ["api/*"],
+      "api": ["api"],
       "components/*": ["components/*"],
       "entry/*": ["entry/*"],
       "pages/*": ["pages/*"],

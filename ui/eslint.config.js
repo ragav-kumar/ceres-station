@@ -10,6 +10,7 @@ export default tseslint.config(
         ignores: [
             'dist',
             'vite.config.ts',
+            'src/schema.d.ts'
         ]
     },
     {

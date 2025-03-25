@@ -5,28 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/EntityBaseExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ReagentExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ResourceExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/api.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/schema.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/CeresStation.Dto.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/CeresStation.Dto.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Processor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Processor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Transport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Transport.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.Crud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.Crud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.Crud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.Crud.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Extensions/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ListExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/.npmrc" beforeDir="false" afterPath="$PROJECT_DIR$/ui/.npmrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/eslint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/api/dto.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/api/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/api/sdk.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tsconfig.app.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tsconfig.node.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -77,7 +70,7 @@
     "npm.dev.executor": "Run",
     "npm.install-clean.executor": "Run",
     "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\WebStorm 2023.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\ceres-station\\ui\\node_modules\\typescript\\lib",
     "typescript.add.unambiguous.imports.on.the.fly": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -88,7 +81,7 @@
       <recent name="D:\repos\ceres-station\ui\src\components\Nav" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.install-clean">
+  <component name="RunManager" selected="npm.dev">
     <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/ui/package.json" />
       <command value="run" />
@@ -111,8 +104,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.install-clean" />
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.install-clean" />
       </list>
     </recent_temporary>
   </component>
@@ -132,7 +125,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="4646000" />
+      <workItem from="1742688813252" duration="7697000" />
     </task>
     <servers />
   </component>

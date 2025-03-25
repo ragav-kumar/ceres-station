@@ -1,9 +1,10 @@
-import { ColumnDto, ListRowDto } from 'api/dto.ts';
 import { ReactNode } from 'react';
 import styles from './Table.module.css';
+import paths from 'schema';
+type ColumnDto = paths.components['schemas']['ColumnDto'];
 
 interface RowProps {
-    row: ListRowDto;
+    row: Record<string, unknown>;
     columns: ColumnDto[];
 }
 
@@ -12,7 +13,7 @@ export const Row = ({row, columns}: RowProps) => {
     for (const column of columns) {
         if (column.fieldName) {
             cells.push(
-                <td key={column.fieldName} className={styles.cell} style={{ width: column.width }}>
+                <td key={column.fieldName} className={styles.cell} style={{ width: column.width || undefined }}>
                     {row[column.fieldName] as ReactNode}
                 </td>,
             );
