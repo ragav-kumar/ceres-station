@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CeresStation.Dto/ProcessorDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Dto/ReagentDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/SettingsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/ExtractorDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/ExtractorDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Extensions/ExtractorExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="2493000" />
+      <workItem from="1742688813252" duration="3456000" />
     </task>
     <servers />
   </component>

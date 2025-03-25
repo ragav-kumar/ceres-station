@@ -31,7 +31,7 @@ public class ListController(IMapper mapper)
         EntityType entityType = ToEntityType(entityTypeName);
         
         await using StationContext ctx = new();
-        ApplyDtos(entityType, columns, ctx);
+        ctx.ApplyDtos(entityType, columns);
         await ctx.SaveChangesAsync();
         
         return mapper.Map<IEnumerable<ColumnDto>>(ctx
@@ -41,75 +41,8 @@ public class ListController(IMapper mapper)
         );
     }
 
-    private static void ApplyDtos(EntityType entityType, IList<ColumnDto> dtos, StationContext ctx)
-    {
-        HashSet<ColumnDto> dtoSet = dtos.ToHashSet();
-        HashSet<Column> modelSet = ctx.Columns.Where(o => o.EntityType == entityType).ToHashSet();
-        
-        // Delete
-        List<Column> toDelete = modelSet
-            .Where(o => dtoSet.All(d => d.Id != o.Id))
-            .ToList();
-        ctx.RemoveRange(toDelete);
-        
-        // Add
-        List<Column> toAdd = dtoSet
-            .Where(o => modelSet.All(m => m.Id != o.Id))
-            .Select(CreateColumnFromDto)
-            .ToList();
-        ctx.AddRange(toAdd);
-        
-        // Update
-        List<ColumnDto> toUpdate = dtoSet
-            .Where(o => modelSet.Any(m => m.Id == o.Id))
-            .ToList();
-        foreach (ColumnDto dto in toUpdate)
-        {
-            Column model = modelSet.Single(m => m.Id == dto.Id);
-            ApplyDto(model, dto);
-        }
-    }
+    
 
-    private static void ApplyDto(Column model, ColumnDto dto)
-    {
-        if (dto.EntityType is not null)
-            model.EntityType = dto.EntityType.Value;
-        if (dto.DisplayName is not null)
-            model.DisplayName = dto.DisplayName;
-        if (dto.Width is not null)
-            model.Width = dto.Width.Value;
-        if (dto.Order is not null)
-            model.Order = dto.Order.Value;
-        
-        if (dto.AttributeDefinitionId is not null)
-        {
-            model.FieldType = FieldType.Attribute;
-            model.AttributeDefinitionId = dto.AttributeDefinitionId;
-            model.FieldName = null;
-        }
-        else if (dto.FieldName is not null)
-        {
-            model.FieldType = FieldType.Model;
-            model.AttributeDefinitionId = null;
-            model.FieldName = dto.FieldName;
-        }
-        else
-        {
-            throw new InvalidOperationException("Every column must reference either a field or an attribute.");
-        }
-    }
-
-    private static Column CreateColumnFromDto(ColumnDto dto) => new()
-    {
-        Id = Guid.NewGuid(),
-        EntityType = dto.EntityType ?? EntityType.Undefined,
-        Order = dto.Order ?? 0,
-        FieldName = dto.FieldName,
-        FieldType = dto.FieldName is not null ? FieldType.Model : dto.AttributeDefinitionId is not null ? FieldType.Attribute : FieldType.Undefined,
-        Width = dto.Width ?? 100,
-        DisplayName = dto.DisplayName,
-        AttributeDefinitionId = dto.AttributeDefinitionId
-    };
 
     [HttpGet("{entityTypeName}")]
     public ListDataDto GetListData(string entityTypeName)

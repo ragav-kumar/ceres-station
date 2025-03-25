@@ -2,7 +2,7 @@
 using CeresStation.Dto;
 using CeresStation.Model;
 
-namespace CeresStation.Web.Controllers;
+namespace CeresStation.Web;
 
 public partial class ProcessorsController
 {

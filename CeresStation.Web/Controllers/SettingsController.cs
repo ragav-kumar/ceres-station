@@ -1,8 +1,7 @@
 ﻿using CeresStation.Core;
-using CeresStation.Web.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CeresStation.Web.Controllers;
+namespace CeresStation.Web;
 
 [ApiController]
 [Route("api/[controller]")]

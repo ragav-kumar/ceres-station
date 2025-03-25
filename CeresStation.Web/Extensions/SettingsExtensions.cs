@@ -1,13 +1,13 @@
 ﻿using CeresStation.Core;
 using CeresStation.Model;
 
-namespace CeresStation.Web.Extensions;
+namespace CeresStation.Web;
 
-public static class SettingsExtensions
+internal static class SettingsExtensions
 {
-    public static GeneralSetting FixedSettings(this StationContext ctx) => ctx.Settings.Single();
+    internal static GeneralSetting FixedSettings(this StationContext ctx) => ctx.Settings.Single();
 
-    public static async Task UpdateMoney(this StationContext ctx, long delta)
+    internal static async Task UpdateMoney(this StationContext ctx, long delta)
     {
         GeneralSetting settings = ctx.FixedSettings();
         settings.Money += delta;
