@@ -12,9 +12,9 @@ public class Transport : EntityBase
     
     
     public required Guid SourceId { get; set; }
-    public EntityBase Source { get; set; }
+    public virtual EntityBase Source { get; set; }
     public required Guid DestinationId { get; set; }
-    public EntityBase Destination { get; set; }
+    public virtual EntityBase Destination { get; set; }
     public required Guid ResourceId { get; set; }
     public virtual Resource Resource { get; set; }
 }

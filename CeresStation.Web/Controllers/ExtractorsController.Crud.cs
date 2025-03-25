@@ -41,4 +41,15 @@ public partial class ExtractorsController
     protected override Guid GetId(Extractor model) => model.Id;
 
     protected override Extractor? GetFromId(StationContext ctx, Guid id) => ctx.Extractors.SingleOrDefault(e => e.Id == id);
+
+    protected override ExtractorDto ToDto(Extractor model) => new(
+        Id: model.Id,
+        Name: model.Name,
+        Position: model.Position,
+        ExtractionRate: model.ExtractionRate,
+        StandardDeviation: model.StandardDeviation,
+        Stockpile: model.Stockpile,
+        Capacity: model.Capacity,
+        Resource: model.Resource?.ToDto() ?? null
+    );
 }

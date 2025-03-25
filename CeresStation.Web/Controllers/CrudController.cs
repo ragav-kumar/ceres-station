@@ -1,23 +1,23 @@
-﻿using AutoMapper;
-using CeresStation.Core;
+﻿using CeresStation.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CeresStation.Web;
 
 [ApiController]
 [Route("api/[controller]")]
-public abstract class CrudController<TModel, TDto>(IMapper mapper) : ControllerBase
+public abstract class CrudController<TModel, TDto> : ControllerBase
 {
     protected abstract TModel NewModel();
     protected abstract void ApplyDto(TModel model, TDto dto, StationContext ctx);
     protected abstract Guid GetId(TModel model);
     protected abstract TModel? GetFromId(StationContext ctx, Guid id);
+    protected abstract TDto ToDto(TModel model);
     
     [HttpGet("{id:guid}")]
     public TDto GetOne(Guid id)
     {
         using StationContext ctx = new();
-        return mapper.Map<TDto>(GetFromId(ctx, id)!);
+        return ToDto(GetFromId(ctx, id)!);
     }
 
     [HttpPost]
@@ -31,7 +31,7 @@ public abstract class CrudController<TModel, TDto>(IMapper mapper) : ControllerB
         ctx.Add(model!);
         await ctx.SaveChangesAsync();
 
-        return mapper.Map<TDto>(GetFromId(ctx, id)!);
+        return ToDto(GetFromId(ctx, id)!);
     }
 
     [HttpPut("{id:guid}")]
@@ -47,7 +47,7 @@ public abstract class CrudController<TModel, TDto>(IMapper mapper) : ControllerB
         ApplyDto(model, dto, ctx);
         await ctx.SaveChangesAsync();
 
-        return mapper.Map<TDto>(GetFromId(ctx, id));
+        return ToDto(GetFromId(ctx, id)!);
     }
 
     [HttpDelete("{id:guid}")]

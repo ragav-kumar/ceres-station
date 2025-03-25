@@ -85,4 +85,12 @@ public partial class ProcessorsController
     protected override Guid GetId(Processor model) => model.Id;
 
     protected override Processor? GetFromId(StationContext ctx, Guid id) => ctx.Processors.SingleOrDefault(p => p.Id == id);
+    protected override ProcessorDto ToDto(Processor model) => new(
+        Id: model.Id,
+        Name: model.Name,
+        Position: model.Position,
+        TimeStep: model.TimeStep,
+        Inputs: model.Inputs.ToDto().ToList(),
+        Outputs: model.Outputs.ToDto().ToList()
+    );
 }

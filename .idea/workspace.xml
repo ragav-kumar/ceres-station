@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/EntityBaseExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ReagentExtensions.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ResourceExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Core/StationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/CeresStation.Dto.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Dto/CeresStation.Dto.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Dto/DtoMappingProfile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Processor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Processor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Model/Transport.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Model/Transport.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/CeresStation.Web.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.Crud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ConsumerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/CrudController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.Crud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ExtractorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.Crud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ProcessorsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.Crud.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.Crud.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/TransportsController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Extensions/ListExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Extensions/ListExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="3456000" />
+      <workItem from="1742688813252" duration="4646000" />
     </task>
     <servers />
   </component>

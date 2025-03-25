@@ -38,4 +38,15 @@ public partial class ConsumerController
 
     protected override Guid GetId(Consumer model) => model.Id;
     protected override Consumer? GetFromId(StationContext ctx, Guid id) => ctx.Consumers.SingleOrDefault(x => x.Id == id);
+
+    protected override ConsumerDto ToDto(Consumer model) => new(
+        Id: model.Id,
+        Name: model.Name,
+        Position: model.Position,
+        ConsumptionRate: model.ConsumptionRate,
+        StandardDeviation: model.StandardDeviation,
+        Stockpile: model.Stockpile,
+        Capacity: model.Capacity,
+        Resource: model.Resource.ToDto()
+    );
 }

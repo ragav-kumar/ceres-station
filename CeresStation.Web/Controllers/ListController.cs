@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using AutoMapper;
 using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
@@ -9,45 +8,44 @@ namespace CeresStation.Web.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ListController(IMapper mapper)
+public class ListController
 {
     [HttpGet("{entityTypeName}/Columns")]
     public IEnumerable<ColumnDto> GetColumns(string entityTypeName)
     {
-        EntityType entityType = ToEntityType(entityTypeName);
+        EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
 
         using StationContext ctx = new();
-        
-        return mapper.Map<IEnumerable<ColumnDto>>(ctx
+
+        return ctx
             .Columns
             .Where(c => c.EntityType == entityType)
             .OrderBy(o => o.Order)
-        );
+            .ToList()
+            .ToDto();
     }
 
     [HttpPut("{entityTypeName}/Columns")]
     public async Task<IEnumerable<ColumnDto>> PutColumns(string entityTypeName, [FromBody] IList<ColumnDto> columns)
     {
-        EntityType entityType = ToEntityType(entityTypeName);
-        
+        EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
+
         await using StationContext ctx = new();
         ctx.ApplyDtos(entityType, columns);
         await ctx.SaveChangesAsync();
-        
-        return mapper.Map<IEnumerable<ColumnDto>>(ctx
+
+        return ctx
             .Columns
             .Where(c => c.EntityType == entityType)
             .OrderBy(o => o.Order)
-        );
+            .ToList()
+            .ToDto();
     }
-
-    
-
 
     [HttpGet("{entityTypeName}")]
     public ListDataDto GetListData(string entityTypeName)
     {
-        EntityType entityType = ToEntityType(entityTypeName);
+        EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
         using StationContext ctx = new();
 
         // Get all relevant columns
@@ -56,12 +54,19 @@ public class ListController(IMapper mapper)
             .Where(c => c.EntityType == entityType)
             .ToList();
         // Get raw data
-        IQueryable query = ctx.GetQueryable(ToTableName(entityTypeName));
+        IQueryable query = ctx.GetQueryable(ListExtensions.ToTableName(entityTypeName));
 
+        // For now, we only support field names.
         List<string> fieldNames = columns
             .Where(o => o.FieldType == FieldType.Model)
             .Select(o => o.FieldName!)
             .ToList();
+        // Inject Id if needed.
+        if (fieldNames.All(o => o != "Id"))
+        {
+            fieldNames.Add("Id");
+        }
+        
         IQueryable cleanedQuery = query.ColumnSelect(fieldNames);
         List<object> rows = cleanedQuery.Cast<object>().ToList();
 
@@ -85,29 +90,5 @@ public class ListController(IMapper mapper)
             Rows: rowDtos,
             TotalCount: rows.Count
         );
-    }
-
-    private static EntityType ToEntityType(string entityTypeName)
-    {
-        return entityTypeName.ToLower() switch
-        {
-            "extractor" or "extractors" => EntityType.Extractor,
-            "processor" or "processors" => EntityType.Processor,
-            "transport" or "transports" => EntityType.Transport,
-            "consumer" or "consumers"   => EntityType.Consumer,
-            _                           => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
-        };
-    }
-
-    private static string ToTableName(string entityTypeName)
-    {
-        return entityTypeName.ToLower() switch
-        {
-            "extractor" or "extractors" => "Extractor",
-            "processor" or "processors" => "Processor",
-            "transport" or "transports" => "Transport",
-            "consumer" or "consumers"   => "Consumer",
-            _                           => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
-        };
     }
 }

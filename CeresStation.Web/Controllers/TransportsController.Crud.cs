@@ -41,4 +41,16 @@ public partial class TransportsController
 
     protected override Guid GetId(Transport model) => model.Id;
     protected override Transport? GetFromId(StationContext ctx, Guid id) => ctx.Transports.SingleOrDefault(t => t.Id == id);
+
+    protected override TransportDto ToDto(Transport model) => new(
+        Id: model.Id,
+        Name: model.Name,
+        Position: model.Position,
+        TripTimeStandardDeviation: model.TripTimeStandardDeviation,
+        CurrentCargo: model.CurrentCargo,
+        Capacity: model.Capacity,
+        Source: model.Source.ToDto(),
+        Destination: model.Destination.ToDto(),
+        Resource: model.Resource.ToDto()
+    );
 }

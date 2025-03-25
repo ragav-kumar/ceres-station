@@ -10,20 +10,20 @@ internal static class ListExtensions
     {
         HashSet<ColumnDto> dtoSet = dtos.ToHashSet();
         HashSet<Column> modelSet = ctx.Columns.Where(o => o.EntityType == entityType).ToHashSet();
-        
+
         // Delete
         List<Column> toDelete = modelSet
             .Where(o => dtoSet.All(d => d.Id != o.Id))
             .ToList();
         ctx.RemoveRange(toDelete);
-        
+
         // Add
         List<Column> toAdd = dtoSet
             .Where(o => modelSet.All(m => m.Id != o.Id))
             .ToModel()
             .ToList();
         ctx.AddRange(toAdd);
-        
+
         // Update
         List<ColumnDto> toUpdate = dtoSet
             .Where(o => modelSet.Any(m => m.Id == o.Id))
@@ -45,7 +45,7 @@ internal static class ListExtensions
             model.Width = dto.Width.Value;
         if (dto.Order is not null)
             model.Order = dto.Order.Value;
-        
+
         if (dto.AttributeDefinitionId is not null)
         {
             model.FieldType = FieldType.Attribute;
@@ -77,4 +77,40 @@ internal static class ListExtensions
         DisplayName = dto.DisplayName,
         AttributeDefinitionId = dto.AttributeDefinitionId
     };
+
+    internal static ColumnDto ToDto(this Column model) => new(
+        Id: model.Id,
+        EntityType: model.EntityType,
+        Order: model.Order,
+        DisplayName: model.DisplayName,
+        AttributeDefinitionId: model.AttributeDefinitionId,
+        FieldName: model.FieldName,
+        Width: model.Width
+    );
+    
+    internal static IEnumerable<ColumnDto> ToDto(this IEnumerable<Column> models) => models.Select(ToDto);
+
+    internal static EntityType ToEntityType(string entityTypeName)
+    {
+        return entityTypeName.ToLower() switch
+        {
+            "extractor" or "extractors" => EntityType.Extractor,
+            "processor" or "processors" => EntityType.Processor,
+            "transport" or "transports" => EntityType.Transport,
+            "consumer" or "consumers" => EntityType.Consumer,
+            _ => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
+        };
+    }
+
+    internal static string ToTableName(string entityTypeName)
+    {
+        return entityTypeName.ToLower() switch
+        {
+            "extractor" or "extractors" => "Extractor",
+            "processor" or "processors" => "Processor",
+            "transport" or "transports" => "Transport",
+            "consumer" or "consumers" => "Consumer",
+            _ => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
+        };
+    }
 }
