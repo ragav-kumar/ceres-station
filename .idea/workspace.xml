@@ -5,21 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8af4ce7f-0e79-4db5-aba7-f13d3eda8b23" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/api.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/src/schema.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/api/dto.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/api/generate-dtos.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/api/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/Table/Cell.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/.npmrc" beforeDir="false" afterPath="$PROJECT_DIR$/ui/.npmrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/eslint.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ui/eslint.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.Processors.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.Processors.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CeresStation.Web/Controllers/ListController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/api/dto.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/api/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/src/api/sdk.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/api/sdk.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/entry/App.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/App.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/entry/AppLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/AppLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/entry/TitleContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/entry/TitleContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/schema.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/api/schema.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/utilities/utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/utilities/utilities.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tsconfig.app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/tsconfig.node.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tsconfig.node.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +72,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
+    "npm.generate-schema.executor": "Run",
     "npm.install-clean.executor": "Run",
+    "npm.postgenerate-schema.executor": "Run",
     "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
     "ts.external.directory.path": "C:\\ceres-station\\ui\\node_modules\\typescript\\lib",
     "typescript.add.unambiguous.imports.on.the.fly": "true",
@@ -77,6 +83,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\ceres-station\ui\src\api" />
+      <recent name="C:\ceres-station\ui\src" />
       <recent name="D:\repos\ceres-station\ui\src\components\Toolbar" />
       <recent name="D:\repos\ceres-station\ui\src\components\Nav" />
     </key>
@@ -92,6 +100,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="generate-schema" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ui/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="generate-schema" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="install-clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/ui/package.json" />
       <command value="run" />
@@ -102,9 +120,21 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="postgenerate-schema" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/ui/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="postgenerate-schema" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="npm.dev" />
+        <item itemvalue="npm.postgenerate-schema" />
+        <item itemvalue="npm.generate-schema" />
         <item itemvalue="npm.install-clean" />
       </list>
     </recent_temporary>
@@ -125,7 +155,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="7697000" />
+      <workItem from="1742688813252" duration="16364000" />
     </task>
     <servers />
   </component>

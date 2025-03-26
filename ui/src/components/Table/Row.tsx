@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import styles from './Table.module.css';
-import paths from 'schema';
-type ColumnDto = paths.components['schemas']['ColumnDto'];
+import { ColumnDto } from 'api';
+import { Cell } from 'components/Table/Cell.tsx';
 
 interface RowProps {
     row: Record<string, unknown>;
@@ -11,11 +11,12 @@ interface RowProps {
 export const Row = ({row, columns}: RowProps) => {
     const cells: ReactNode[] = [];
     for (const column of columns) {
+        console.log({ column });
         if (column.fieldName) {
             cells.push(
-                <td key={column.fieldName} className={styles.cell} style={{ width: column.width || undefined }}>
-                    {row[column.fieldName] as ReactNode}
-                </td>,
+                <Cell column={column} key={`${column.fieldName}_${row[column.fieldName]}`}>
+                    {row[column.fieldName]}
+                </Cell>
             );
         }
     }

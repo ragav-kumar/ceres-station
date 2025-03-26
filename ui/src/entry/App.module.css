@@ -37,3 +37,26 @@ body {
 .left-area {
     grid-area: left;
 }
+.toastContainer.toastContainer {
+    width: 100%;
+    padding: 0 1em;
+
+    > div {
+        width: 100%;
+        span {
+            overflow: hidden;
+            white-space: preserve-breaks;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            align-items: baseline;
+
+        }
+    }
+
+    :global(.Toastify__toast--error) {
+        border: 1px solid var(--toastify-color-error);
+    }
+}

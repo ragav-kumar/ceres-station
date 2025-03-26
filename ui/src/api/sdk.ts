@@ -6,6 +6,6 @@ const fetchClient = createFetchClient<paths>({
     baseUrl: 'http://localhost:5000',
 });
 
-const api = createClient(fetchClient);
+const sdk = createClient(fetchClient);
 
-export const useQuery = api.useQuery;
+export const useQuery = sdk.useQuery;

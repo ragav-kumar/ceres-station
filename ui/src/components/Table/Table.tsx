@@ -1,6 +1,8 @@
 import { useQuery } from 'api';
 import { Row } from './Row.tsx';
 import styles from './Table.module.css';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 interface TableProps {
     entity: string;
@@ -34,20 +36,42 @@ export const Table = ( { entity }: TableProps ) => {
 };
 
 const useTableData = ( entityTypeName: string ) => {
-    const { data, isLoading: isLoadingData } = useQuery('get', '/api/List/{entityTypeName}', {
+    const {
+        data,
+        isLoading: isLoadingData,
+        error: dataError,
+    } = useQuery('get', '/api/List/{entityTypeName}', {
         params: {
             path: {
                 entityTypeName,
             }
         },
     });
-    const { data: columns, isLoading: isLoadingColumns } = useQuery('get', '/api/List/{entityTypeName}/Columns', {
+    const {
+        data: columns,
+        isLoading: isLoadingColumns,
+        error: columnsError,
+    } = useQuery('get', '/api/List/{entityTypeName}/Columns', {
         params: {
             path: {
                 entityTypeName,
             }
         }
     });
+
+    useEffect(() => {
+        if (dataError != null) {
+            console.error('Failed to fetch data:', dataError);
+            toast.error(<span>{dataError}</span>);
+        }
+    }, [ dataError ]);
+
+    useEffect(() => {
+        if (columnsError != null) {
+            console.error('Failed to fetch columns:', columnsError);
+            toast.error(<span>{columnsError}</span>);
+        }
+    }, [columnsError]);
 
     return {
         data,

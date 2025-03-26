@@ -63,7 +63,7 @@ internal partial class DatabaseInitializer
             new Column
             {
                 EntityType = EntityType.Processor,
-                Order = 0,
+                Order = 1,
                 FieldType = FieldType.Model,
                 DisplayName = "Time step",
                 Width = 100,

@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 
 export interface TitleContextType {
     set: (title: string) => void;
@@ -11,6 +11,9 @@ export const useTitle = (newTitle: string) => {
     if (!context) {
         throw new Error('useTitle must be used within TitleContext');
     }
-    context.set(newTitle);
+
+    useEffect(() => {
+        context.set(newTitle);
+    }, [newTitle]);
 };
 

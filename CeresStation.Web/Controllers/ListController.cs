@@ -76,7 +76,15 @@ public class ListController
             ListRowDto rowDto = new();
             foreach (PropertyInfo prop in row.GetType().GetProperties())
             {
-                rowDto[prop.Name] = prop.GetValue(row);
+                object? propValue = prop.GetValue(row);
+                if (propValue is EntityBase entityBase)
+                {
+                    rowDto[prop.Name] = entityBase.ToDto();
+                }
+                else
+                {
+                    rowDto[prop.Name] = propValue;
+                }
             }
 
             rowDtos.Add(rowDto);
