@@ -1,16 +1,24 @@
 import { useQuery } from 'api';
 import { Row } from './Row.tsx';
 import styles from './Table.module.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { HeaderCell } from 'components/Table/HeaderCell';
 
 interface TableProps {
     entity: string;
+    isResizable?: boolean;
 }
 
-export const Table = ( { entity }: TableProps ) => {
+export const Table = ( { entity, isResizable = true }: TableProps ) => {
+    const [ columnWidths, setColumnWidths ] = useState<number[] | undefined>(undefined);
     const { data, columns, isLoading } = useTableData(entity);
+
+    useEffect(() => {
+        if (columns) {
+            setColumnWidths(columns.map(c => c.width || 100));
+        }
+    }, [columns]);
 
     if ( isLoading || columns == null || data == null ) {
         return null;
