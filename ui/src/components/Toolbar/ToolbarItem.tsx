@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import styles from './Toolbar.module.css';
-import { joinClassNames } from 'utilities/utilities';
+import { joinClassNames } from 'utilities';
 
 interface ToolbarItemProps {
     tooltipText: string;

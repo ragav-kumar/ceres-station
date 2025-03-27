@@ -15,6 +15,11 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+    </option>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -64,6 +69,13 @@
     "ts.external.directory.path": "C:\\ceres-station\\ui\\node_modules\\typescript\\lib",
     "typescript.add.unambiguous.imports.on.the.fly": "true",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -140,8 +152,33 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="17796000" />
+      <workItem from="1742688813252" duration="18726000" />
     </task>
+    <task id="LOCAL-00001" summary="Fix cell rendering">
+      <option name="closed" value="true" />
+      <created>1743045273238</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743045273238</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix cell rendering">
+      <option name="closed" value="true" />
+      <created>1743045287299</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743045287299</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Fix cell rendering">
+      <option name="closed" value="true" />
+      <created>1743045297310</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1743045297310</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,5 +186,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fix cell rendering" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix cell rendering" />
   </component>
 </project>
