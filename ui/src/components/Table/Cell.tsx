@@ -1,14 +1,13 @@
-import { ColumnDto } from 'api';
 import { ReactNode } from 'react';
 import styles from 'components/Table/Table.module.css';
 import { isEntityDto, isReactNode, isResourceDto } from 'utilities';
 
 interface CellProps {
-    column: ColumnDto;
+    width: number | undefined;
     children: unknown;
 }
 
-export const Cell = ( { column, children }: CellProps) => {
+export const Cell = ( { children, width }: CellProps) => {
     let rendered: ReactNode;
     
     if (isReactNode(children)) {
@@ -20,7 +19,7 @@ export const Cell = ( { column, children }: CellProps) => {
     return (
         <td
             className={styles.cell}
-            style={{ width: column.width || undefined }}
+            style={{ width, maxWidth: width }}
         >
             {rendered}
         </td>

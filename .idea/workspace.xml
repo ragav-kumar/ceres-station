@@ -24,8 +24,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -152,7 +152,7 @@
       <option name="presentableId" value="Default" />
       <updated>1742057697872</updated>
       <workItem from="1742057699114" duration="6787000" />
-      <workItem from="1742688813252" duration="18726000" />
+      <workItem from="1742688813252" duration="20175000" />
     </task>
     <task id="LOCAL-00001" summary="Fix cell rendering">
       <option name="closed" value="true" />

@@ -3,6 +3,7 @@ import { Row } from './Row.tsx';
 import styles from './Table.module.css';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { HeaderCell } from 'components/Table/HeaderCell';
 
 interface TableProps {
     entity: string;
@@ -18,10 +19,15 @@ export const Table = ( { entity }: TableProps ) => {
     return (
         <div className={styles.wrap}>
             <table className={styles.table}>
+                <colgroup>
+                    {columns.map(column => (
+                        <col key={column.id} style={{ width: column.width || undefined }} />
+                    ))}
+                </colgroup>
                 <thead>
                 <tr>
                     {columns.map(( column, index ) => (
-                        <th key={index} style={{ width: column.width || undefined }}>{column.displayName}</th>
+                        <HeaderCell key={index} column={column} />
                     ))}
                 </tr>
                 </thead>

@@ -1,14 +1,14 @@
 import { NavItem } from './NavItem';
 import styles from './Nav.module.css';
 import { joinClassNames } from 'utilities';
-import { useQuery } from 'api/sdk.ts';
+import { useQuery } from 'api';
 
 interface TopNavProps {
     className?: string;
 }
 
 export const TopNav = ({className}: TopNavProps) => {
-    const { data: money, isLoading } = useQuery('get', '/api/Settings/Money');
+    const { data: money = 0, isLoading } = useQuery('get', '/api/Settings/Money');
 
     return (
         <div className={joinClassNames(styles.topNavWrap, className)}>

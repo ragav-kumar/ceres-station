@@ -1,14 +1,8 @@
 .table {
     margin: 1rem;
     border-collapse: collapse;
-    width: max-content;
-    min-width: calc(100% - 2rem);
-
-    /*Bottom border on heading row*/
-    thead th {
-        border-bottom: 1px solid #ddd;
-        padding: 0 .5rem;
-    }
+    width: auto;
+    display: inline-table;
 
     tbody:before {
         content: '@';
@@ -19,9 +13,20 @@
 }
 
 .cell {
-    text-align: center;
+    text-align: left;
     text-overflow: ellipsis;
     height: 1em;
+    padding: 0 .5rem;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.headerCell {
+    composes: cell;
+
+    font-weight: bold;
+    /*Bottom border on heading row*/
+    border-bottom: 1px solid #ddd;
 }
 
 .row {
