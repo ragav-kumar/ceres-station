@@ -1,7 +1,7 @@
 import { ColumnDto } from 'api';
-import { isValidElement, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import styles from 'components/Table/Table.module.css';
-import { isEntityDto } from 'utilities';
+import { isEntityDto, isReactNode, isResourceDto } from 'utilities';
 
 interface CellProps {
     column: ColumnDto;
@@ -11,9 +11,9 @@ interface CellProps {
 export const Cell = ( { column, children }: CellProps) => {
     let rendered: ReactNode;
     
-    if (children == null || isValidElement(children)) {
+    if (isReactNode(children)) {
         rendered = children;
-    } else if (isEntityDto(children)) {
+    } else if (isEntityDto(children) || isResourceDto(children)) {
         rendered = children.name;
     }
 

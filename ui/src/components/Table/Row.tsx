@@ -11,7 +11,6 @@ interface RowProps {
 export const Row = ({row, columns}: RowProps) => {
     const cells: ReactNode[] = [];
     for (const column of columns) {
-        console.log({ column });
         if (column.fieldName) {
             cells.push(
                 <Cell column={column} key={`${column.fieldName}_${row[column.fieldName]}`}>
