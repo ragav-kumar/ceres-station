@@ -65,9 +65,36 @@ internal partial class DatabaseInitializer
                 EntityType = EntityType.Processor,
                 Order = 1,
                 FieldType = FieldType.Model,
+                DisplayName = "Position",
+                Width = 100,
+                FieldName = "Position",
+            },
+            new Column
+            {
+                EntityType = EntityType.Processor,
+                Order = 2,
+                FieldType = FieldType.Model,
                 DisplayName = "Time step",
                 Width = 100,
                 FieldName = "TimeStep",
+            },
+            new Column
+            {
+                EntityType = EntityType.Processor,
+                Order = 3,
+                FieldType = FieldType.Model,
+                DisplayName = "Inputs",
+                Width = 300,
+                FieldName = "Inputs",
+            },
+            new Column
+            {
+                EntityType = EntityType.Processor,
+                Order = 4,
+                FieldType = FieldType.Model,
+                DisplayName = "Outputs",
+                Width = 300,
+                FieldName = "Outputs",
             }
         );
         

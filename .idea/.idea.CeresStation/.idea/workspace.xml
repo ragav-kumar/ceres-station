@@ -5,12 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a68c3585-44c8-4410-9602-1963a057a6ec" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ui/src/components/Table/TableContext.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/src/components/Table/TableHeader.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CeresStation/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CeresStation/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Cell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Cell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/HeaderCell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/HeaderCell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Row.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/components/Table/Table.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/src/utilities/utilities.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ui/src/utilities/utilities.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -27,6 +38,11 @@
     "accountId": "c354bdc8-6cda-460a-9daf-54406776aecc"
   }
 }]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/408236be4b0703755f3ed96daaae245919a792d65ce5eaa672d9fa945b1f/PropertyInfo.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad1d58b8dd22123dfae3f2cf5d8b199992465c9c344d032f93a826d8e5539ff/RuntimeType.CoreCLR.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e3aabb871c2e895d30a119b76f7d50fc4218bd16b5431a1dbcf781ba941ba3/ShapedQueryCompilingExpressionVisitor.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 5
@@ -41,6 +57,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Debug",
+    ".NET Project.CeresStation.Context.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
@@ -52,6 +70,13 @@
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "GitStage.ChangesTree.GroupingKeys": [
+      "directory",
+      "module",
+      "repository"
+    ]
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CeresStation.Web: http">
@@ -112,8 +137,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743362639208</updated>
-      <workItem from="1743362640955" duration="1003000" />
+      <workItem from="1743362640955" duration="3875000" />
     </task>
+    <task id="LOCAL-00001" summary="Implement resizable columns">
+      <option name="closed" value="true" />
+      <created>1743368230096</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743368230096</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,5 +165,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implement resizable columns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement resizable columns" />
   </component>
 </project>

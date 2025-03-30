@@ -7,6 +7,6 @@ namespace CeresStation.Model;
 public class Processor : EntityBase
 {
 	public float TimeStep { get; set; }
-	public virtual IEnumerable<Reagent> Inputs { get; set; }
-	public virtual IEnumerable<Reagent> Outputs { get; set; }
+	public virtual ICollection<Reagent> Inputs { get; set; }
+	public virtual ICollection<Reagent> Outputs { get; set; }
 }

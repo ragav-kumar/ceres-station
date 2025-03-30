@@ -3,6 +3,7 @@ using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CeresStation.Web.Controllers;
 
@@ -67,7 +68,7 @@ public class ListController
             fieldNames.Add("Id");
         }
         
-        IQueryable cleanedQuery = query.ColumnSelect(fieldNames);
+        IQueryable cleanedQuery = query.AsNoTrackingDynamic(ctx).ColumnSelect(fieldNames);
         List<object> rows = cleanedQuery.Cast<object>().ToList();
 
         List<ListRowDto> rowDtos = [];
@@ -76,15 +77,7 @@ public class ListController
             ListRowDto rowDto = new();
             foreach (PropertyInfo prop in row.GetType().GetProperties())
             {
-                object? propValue = prop.GetValue(row);
-                if (propValue is EntityBase entityBase)
-                {
-                    rowDto[prop.Name] = entityBase.ToDto();
-                }
-                else
-                {
-                    rowDto[prop.Name] = propValue;
-                }
+                rowDto[prop.Name] = prop.ToDto(row);
             }
 
             rowDtos.Add(rowDto);

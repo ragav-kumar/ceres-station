@@ -1,6 +1,12 @@
-﻿using CeresStation.Core;
+﻿using System.Collections;
+using System.Reflection;
+using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Column = CeresStation.Model.Column;
+using EntityType = CeresStation.Model.EntityType;
 
 namespace CeresStation.Web;
 
@@ -112,5 +118,34 @@ internal static class ListExtensions
             "consumer" or "consumers" => "Consumer",
             _ => throw new ArgumentException($"Unknown entity type: {entityTypeName}")
         };
+    }
+
+    internal static object? ToDto(this PropertyInfo property, object obj) => MapValue(property.GetValue(obj));
+    
+    private static object? MapValue(object? value) => value switch
+    {
+        EntityBase entityBase  => entityBase.ToDto(),
+        Resource resource      => resource.ToDto(),
+        Reagent reagent        => reagent.ToDto(),
+        string str             => str,
+        ICollection collection => collection.Cast<object>().Select(MapValue).ToList(),
+        _                      => value
+    };
+    
+    internal static IQueryable AsNoTrackingDynamic(this IQueryable source, StationContext ctx)
+    {
+        Type elementType = source.ElementType;
+
+        MethodInfo method = typeof(EntityFrameworkQueryableExtensions)
+            .GetMethods()
+            .First
+            (
+                m =>
+                m.Name == nameof(EntityFrameworkQueryableExtensions.AsNoTracking)
+                && m.GetParameters().Length == 1
+            )
+            .MakeGenericMethod(elementType);
+
+        return (IQueryable)method.Invoke(null, [source])!;
     }
 }
