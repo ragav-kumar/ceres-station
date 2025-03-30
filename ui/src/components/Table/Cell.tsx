@@ -1,15 +1,18 @@
 import { ReactNode } from 'react';
 import styles from 'components/Table/Table.module.css';
 import { isEntityDto, isReactNode, isResourceDto } from 'utilities';
+import { useTableContext } from './TableContext';
 
 interface CellProps {
-    width: number | undefined;
+    columnId: string;
     children: unknown;
 }
 
-export const Cell = ( { children, width }: CellProps) => {
+export const Cell = ({children, columnId}: CellProps) => {
+    const width = useTableContext().getWidth(columnId);
+
     let rendered: ReactNode;
-    
+
     if (isReactNode(children)) {
         rendered = children;
     } else if (isEntityDto(children) || isResourceDto(children)) {
@@ -19,7 +22,7 @@ export const Cell = ( { children, width }: CellProps) => {
     return (
         <td
             className={styles.cell}
-            style={{ width, maxWidth: width }}
+            style={{width, maxWidth: width}}
         >
             {rendered}
         </td>

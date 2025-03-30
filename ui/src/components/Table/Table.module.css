@@ -1,8 +1,6 @@
 .table {
     margin: 1rem;
     border-collapse: collapse;
-    width: auto;
-    display: inline-table;
 
     tbody:before {
         content: '@';
@@ -23,10 +21,21 @@
 
 .headerCell {
     composes: cell;
+    position: relative;
 
     font-weight: bold;
     /*Bottom border on heading row*/
     border-bottom: 1px solid #ddd;
+
+    .resizer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 5px;
+        user-select: none;
+        cursor: col-resize;
+    }
 }
 
 .row {

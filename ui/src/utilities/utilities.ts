@@ -36,3 +36,22 @@ export const isReactNode = ( value: unknown): value is ReactNode => {
     }
     return false;
 };
+
+// Gotta do as actual function declarations because I want overloading.
+export function toDictionary<TItem>(arr: TItem[], getKey: (item: TItem) => string): Record<string, TItem>;
+export function toDictionary<TItem, TValue>(arr: TItem[], getKey: (item: TItem) => string, getValue: (item: TItem) => TValue): Record<string, TValue>;
+// eslint-disable-next-line func-style
+export function toDictionary<TItem, TValue>(
+    arr: TItem[],
+    getKey: (item: TItem) => string,
+    getValue?: (item: TItem) => TValue,
+): Record<string, TValue | TItem> {
+    const dict = Object.create(null) as Record<string, TItem | TValue>;
+
+    for (const item of arr) {
+        const key = getKey(item);
+        dict[key] = getValue != null ? getValue(item) : item;
+    }
+
+    return dict;
+};

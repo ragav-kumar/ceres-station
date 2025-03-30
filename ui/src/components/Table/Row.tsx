@@ -13,7 +13,7 @@ export const Row = ({row, columns}: RowProps) => {
     for (const column of columns) {
         if (column.fieldName) {
             cells.push(
-                <Cell key={`${column.fieldName}_${row[column.fieldName]}`} width={column.width || undefined}>
+                <Cell key={`${column.fieldName}_${row[column.fieldName]}`} columnId={column.id!}>
                     {row[column.fieldName]}
                 </Cell>
             );
