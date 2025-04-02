@@ -83,7 +83,7 @@ internal static class ListExtensions
         AttributeDefinitionId = dto.AttributeDefinitionId
     };
 
-    internal static ColumnDto ToDto(this Column model) => new(
+    private static ColumnDto ToDto(this Column model) => new(
         Id: model.Id,
         EntityType: model.EntityType,
         Order: model.Order,

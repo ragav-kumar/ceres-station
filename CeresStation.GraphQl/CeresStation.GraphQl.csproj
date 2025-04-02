@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Consumers\" />
+      <Folder Include="Processors\" />
+      <Folder Include="Transports\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="HotChocolate" Version="15.1.3" />
+      <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.3" />
+      <PackageReference Include="HotChocolate.Data" Version="15.1.3" />
+      <PackageReference Include="HotChocolate.Data.EntityFramework" Version="15.1.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CeresStation.Context\CeresStation.Context.csproj" />
+      <ProjectReference Include="..\CeresStation.Dto\CeresStation.Dto.csproj" />
+      <ProjectReference Include="..\CeresStation.Model\CeresStation.Model.csproj" />
+    </ItemGroup>
+
+</Project>

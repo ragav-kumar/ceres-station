@@ -5,7 +5,7 @@ namespace CeresStation.Dto;
 public record TransportDto(
     Guid? Id,
     string? Name,
-    Position? Position,
+    PositionDto? Position,
     float? TripTimeStandardDeviation,
     float? CurrentCargo,
     float? Capacity,

@@ -21,7 +21,8 @@ public class StationContext : DbContext
 
     public StationContext()
     {
-        Environment.SpecialFolder folder = Environment.SpecialFolder.LocalApplicationData;
+        const Environment.SpecialFolder folder = Environment.SpecialFolder.LocalApplicationData;
+        
         string path = Environment.GetFolderPath(folder);
         DbPath = Path.Join(path, "CeresStation.db");
     }
@@ -30,8 +31,9 @@ public class StationContext : DbContext
     // special "local" folder for your platform.
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        options.UseSqlite($"Data Source={DbPath}");
-        options.UseLazyLoadingProxies();
+        options
+            .UseSqlite($"Data Source={DbPath}")
+            .UseLazyLoadingProxies();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

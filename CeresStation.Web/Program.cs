@@ -1,4 +1,5 @@
 using CeresStation.Dto;
+using CeresStation.GraphQl;
 using Microsoft.AspNetCore.Cors.Infrastructure;
 
 const string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -20,6 +21,10 @@ builder.Services.AddCors(options =>
 			.AllowAnyMethod();
 	});
 });
+
+builder.Services
+	.AddGraphQLServer()
+	.AddCeresStationGraphQl();
 
 WebApplication app = builder.Build();
 

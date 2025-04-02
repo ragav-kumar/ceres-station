@@ -1,11 +1,9 @@
-﻿using CeresStation.Model;
-
-namespace CeresStation.Dto;
+﻿namespace CeresStation.Dto;
 
 public record ExtractorDto(
 	Guid? Id,
 	string? Name,
-	Position? Position,
+	PositionDto? Position,
 	float? ExtractionRate,
 	float? StandardDeviation,
 	float? Stockpile,
