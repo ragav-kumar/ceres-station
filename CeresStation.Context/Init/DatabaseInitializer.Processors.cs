@@ -14,7 +14,7 @@ internal partial class DatabaseInitializer
     internal async Task Processors()
     {
         Console.WriteLine("Adding Processor: Water Electrolyzer");
-        ctx.Add(new Processor
+        ctx.Processors.Add(new Processor
         {
             Id = waterElectrolyzerId,
             Name = "Water Electrolyzer",
@@ -50,7 +50,7 @@ internal partial class DatabaseInitializer
         
         // Initialize List columns
         // TODO: Add support for calculated columns (i.e. reagent list)
-        ctx.AddRange(
+        ctx.Columns.AddRange(
             new Column
             {
                 EntityType = EntityType.Processor,

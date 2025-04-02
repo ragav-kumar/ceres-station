@@ -21,7 +21,7 @@ internal partial class DatabaseInitializer
         await AddTransport("Hydrogen disposal conduit", electrolyzerToHydrogenVentId, hydrogenId, waterElectrolyzerId, hydrogenVentId);
         
         // Initialize List columns
-        ctx.AddRange(
+        ctx.Columns.AddRange(
             new Column
             {
                 EntityType = EntityType.Transport,
@@ -96,7 +96,7 @@ internal partial class DatabaseInitializer
         EntityBase source = ctx.Entities.Single(o => o.Id == sourceId);
         Position sourcePosition = source.Position;
         
-        ctx.Add(new Transport
+        ctx.Transports.Add(new Transport
         {
             Id = transportId,
             Name = transportName,

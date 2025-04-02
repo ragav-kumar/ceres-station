@@ -16,7 +16,7 @@ internal partial class DatabaseInitializer
 
     public async Task Settings()
     {
-        ctx.Add(new GeneralSetting
+        ctx.Settings.Add(new GeneralSetting
         {
             Id = Guid.Empty,
             Money = 1_000_000

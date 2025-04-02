@@ -5,7 +5,7 @@ namespace CeresStation.Web;
 
 [ApiController]
 [Route("api/[controller]")]
-public abstract class CrudController<TModel, TDto> : ControllerBase
+public abstract class CrudController<TModel, TDto> : ControllerBase where TModel : class
 {
     protected abstract TModel NewModel();
     protected abstract void ApplyDto(TModel model, TDto dto, StationContext ctx);
@@ -28,7 +28,7 @@ public abstract class CrudController<TModel, TDto> : ControllerBase
         TModel model = NewModel();
         ApplyDto(model, dto, ctx);
         Guid id = GetId(model);
-        ctx.Add(model!);
+        ctx.Set<TModel>().Add(model!);
         await ctx.SaveChangesAsync();
 
         return ToDto(GetFromId(ctx, id)!);
@@ -58,7 +58,7 @@ public abstract class CrudController<TModel, TDto> : ControllerBase
         TModel? model = GetFromId(ctx, id);
         if (model is not null)
         {
-            ctx.Remove(model);
+            ctx.Set<TModel>().Remove(model);
             await ctx.SaveChangesAsync();
         }
     }

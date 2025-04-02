@@ -14,19 +14,19 @@ internal partial class DatabaseInitializer
     
     internal async Task Resources()
     {
-        ctx.Add(new Resource { Id = ironId, Name = "Iron" });
+        ctx.Resources.Add(new Resource { Id = ironId, Name = "Iron" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = copperId, Name = "Copper" });
+        ctx.Resources.Add(new Resource { Id = copperId, Name = "Copper" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = silicatesId, Name = "Silicates" });
+        ctx.Resources.Add(new Resource { Id = silicatesId, Name = "Silicates" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = carbonId, Name = "Carbon" });
+        ctx.Resources.Add(new Resource { Id = carbonId, Name = "Carbon" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = waterId, Name = "Water" });
+        ctx.Resources.Add(new Resource { Id = waterId, Name = "Water" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = hydrogenId, Name = "Hydrogen" });
+        ctx.Resources.Add(new Resource { Id = hydrogenId, Name = "Hydrogen" });
         await ctx.SaveChangesAsync();
-        ctx.Add(new Resource { Id = oxygenId, Name = "Oxygen" });
+        ctx.Resources.Add(new Resource { Id = oxygenId, Name = "Oxygen" });
         await ctx.SaveChangesAsync();
         
         // Not Listable, so no columns

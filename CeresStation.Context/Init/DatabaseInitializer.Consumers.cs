@@ -23,7 +23,7 @@ internal partial class DatabaseInitializer
         await AddConsumer("Power station - Oxidizer", powerStationOxidizerId, oxygenId, 0.888f * powerInput, powerStationPosition);
         
         // Initialize List columns
-        ctx.AddRange(
+        ctx.Columns.AddRange(
             new Column
             {
                 EntityType = EntityType.Consumer,
@@ -76,7 +76,7 @@ internal partial class DatabaseInitializer
     private async Task AddConsumer(string consumerName, Guid id, Guid resourceId, float consumptionRate, Position position)
     {
         Console.WriteLine($"Adding consumer: {consumerName}");
-        ctx.Add(new Consumer
+        ctx.Consumers.Add(new Consumer
         {
             Id = id,
             Name = consumerName,

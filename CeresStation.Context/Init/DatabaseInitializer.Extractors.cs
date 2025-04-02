@@ -22,7 +22,7 @@ internal partial class DatabaseInitializer
         await AddExtractor("Ice Mine", iceMineId, waterId, iceMinePosition);
 
         // Initialize List columns
-        ctx.AddRange(
+        ctx.Columns.AddRange(
             new Column
             {
                 EntityType = EntityType.Extractor,
@@ -75,7 +75,7 @@ internal partial class DatabaseInitializer
     private async Task AddExtractor(string extractorName, Guid extractorId, Guid resourceId, Position position)
     {
         Console.WriteLine($"Adding extractor: {extractorName}");
-        ctx.Add(new Extractor
+        ctx.Extractors.Add(new Extractor
         {
             Id = extractorId,
             Name = extractorName,

@@ -4,7 +4,6 @@ using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Column = CeresStation.Model.Column;
 using EntityType = CeresStation.Model.EntityType;
 
@@ -21,14 +20,14 @@ internal static class ListExtensions
         List<Column> toDelete = modelSet
             .Where(o => dtoSet.All(d => d.Id != o.Id))
             .ToList();
-        ctx.RemoveRange(toDelete);
+        ctx.Columns.RemoveRange(toDelete);
 
         // Add
         List<Column> toAdd = dtoSet
             .Where(o => modelSet.All(m => m.Id != o.Id))
             .ToModel()
             .ToList();
-        ctx.AddRange(toAdd);
+        ctx.Columns.AddRange(toAdd);
 
         // Update
         List<ColumnDto> toUpdate = dtoSet
