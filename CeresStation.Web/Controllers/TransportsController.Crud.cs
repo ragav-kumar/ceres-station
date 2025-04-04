@@ -24,7 +24,7 @@ public partial class TransportsController
         if (dto.Name is not null)
             model.Name = dto.Name;
         if (dto.Position is not null)
-            model.Position = dto.Position;
+            model.Position = dto.Position.ToModel();
         if (dto.Capacity is not null)
             model.Capacity = dto.Capacity.Value;
         if (dto.TripTimeStandardDeviation is not null)
@@ -45,7 +45,7 @@ public partial class TransportsController
     protected override TransportDto ToDto(Transport model) => new(
         Id: model.Id,
         Name: model.Name,
-        Position: model.Position,
+        Position: model.Position.ToDto(),
         TripTimeStandardDeviation: model.TripTimeStandardDeviation,
         CurrentCargo: model.CurrentCargo,
         Capacity: model.Capacity,

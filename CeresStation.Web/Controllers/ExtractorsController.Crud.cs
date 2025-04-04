@@ -31,7 +31,7 @@ public partial class ExtractorsController
         if (dto.Resource is not null)
             model.ResourceId = dto.Resource.Id;
         if (dto.Position is not null)
-            model.Position = new Position(dto.Position);
+            model.Position = dto.Position.ToModel();
         if (dto.ExtractionRate is not null)
             model.ExtractionRate = dto.ExtractionRate.Value;
         if (dto.StandardDeviation is not null)
@@ -45,7 +45,7 @@ public partial class ExtractorsController
     protected override ExtractorDto ToDto(Extractor model) => new(
         Id: model.Id,
         Name: model.Name,
-        Position: model.Position,
+        Position: model.Position.ToDto(),
         ExtractionRate: model.ExtractionRate,
         StandardDeviation: model.StandardDeviation,
         Stockpile: model.Stockpile,

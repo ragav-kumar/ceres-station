@@ -23,7 +23,7 @@ public partial class ConsumerController
         if (dto.Name is not null)
             model.Name = dto.Name;
         if (dto.Position is not null)
-            model.Position = dto.Position;
+            model.Position = dto.Position.ToModel();
         if (dto.Capacity is not null)
             model.Capacity = dto.Capacity.Value;
         if (dto.Stockpile is not null)
@@ -42,7 +42,7 @@ public partial class ConsumerController
     protected override ConsumerDto ToDto(Consumer model) => new(
         Id: model.Id,
         Name: model.Name,
-        Position: model.Position,
+        Position: model.Position.ToDto(),
         ConsumptionRate: model.ConsumptionRate,
         StandardDeviation: model.StandardDeviation,
         Stockpile: model.Stockpile,

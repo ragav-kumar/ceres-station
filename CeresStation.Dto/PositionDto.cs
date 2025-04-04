@@ -1,7 +1,7 @@
 ﻿namespace CeresStation.Dto;
 
 public record PositionDto(
-    float X,
-    float Y,
-    float Z
+    double X,
+    double Y,
+    double Z
 );

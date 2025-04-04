@@ -23,7 +23,7 @@ public partial class ProcessorsController
         if (dto.Name is not null)
             model.Name = dto.Name;
         if (dto.Position is not null)
-            model.Position = dto.Position;
+            model.Position = dto.Position.ToModel();
         if (dto.TimeStep is not null)
             model.TimeStep = dto.TimeStep.Value;
         if (dto.Inputs is not null)
@@ -88,7 +88,7 @@ public partial class ProcessorsController
     protected override ProcessorDto ToDto(Processor model) => new(
         Id: model.Id,
         Name: model.Name,
-        Position: model.Position,
+        Position: model.Position.ToDto(),
         TimeStep: model.TimeStep,
         Inputs: model.Inputs.ToDto().ToList(),
         Outputs: model.Outputs.ToDto().ToList()

@@ -8,6 +8,7 @@ public class Position
     public double Y { get; set; }
     public double Z { get; set; }
 
+    // ReSharper disable once UnusedMember.Global
     public Position()
     {
     }
