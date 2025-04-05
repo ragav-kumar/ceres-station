@@ -1,16 +1,32 @@
-using CeresStation.Dto;
+using CeresStation.Core;
 using CeresStation.GraphQl;
-using Microsoft.AspNetCore.Cors.Infrastructure;
+using CeresStation.Simulation;
+using CeresStation.TickService;
+using Microsoft.EntityFrameworkCore;
 
 const string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+// StationContext DI
+builder.Services.AddDbContext<StationContext>(options => options
+	.UseSqlite($"Data source={StationContext.DefaultDbPath}")
+	.UseLazyLoadingProxies()
+);
+
 // Add services to the container.
 builder.Services.AddControllers();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services
+	.AddEndpointsApiExplorer()
+	.AddSwaggerGen();
+
+// Setup TickService and simulations
+builder.Services
+	.AddSingleton<TickRegistry>()
+	.AddHostedService<TickService>()
+	.AddSimulation();
 
 builder.Services.AddCors(options =>
 {

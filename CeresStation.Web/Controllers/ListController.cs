@@ -3,22 +3,26 @@ using CeresStation.Core;
 using CeresStation.Dto;
 using CeresStation.Model;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CeresStation.Web.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
-public class ListController
+[Route("api/[controller]/{entityTypeName}")]
+public class ListController : ControllerBase
 {
-    [HttpGet("{entityTypeName}/Columns")]
+    private readonly StationContext _context;
+
+    public ListController(StationContext context)
+    {
+        _context = context;
+    }
+    
+    [HttpGet("Columns")]
     public IEnumerable<ColumnDto> GetColumns(string entityTypeName)
     {
-        EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
+        var entityType = ListExtensions.ToEntityType(entityTypeName);
 
-        using StationContext ctx = new();
-
-        return ctx
+        return _context
             .Columns
             .Where(c => c.EntityType == entityType)
             .OrderBy(o => o.Order)
@@ -26,16 +30,15 @@ public class ListController
             .ToDto();
     }
 
-    [HttpPut("{entityTypeName}/Columns")]
+    [HttpPut("Columns")]
     public async Task<IEnumerable<ColumnDto>> PutColumns(string entityTypeName, [FromBody] IList<ColumnDto> columns)
     {
         EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
 
-        await using StationContext ctx = new();
-        ctx.ApplyDtos(entityType, columns);
-        await ctx.SaveChangesAsync();
+        _context.ApplyDtos(entityType, columns);
+        await _context.SaveChangesAsync();
 
-        return ctx
+        return _context
             .Columns
             .Where(c => c.EntityType == entityType)
             .OrderBy(o => o.Order)
@@ -43,19 +46,18 @@ public class ListController
             .ToDto();
     }
 
-    [HttpGet("{entityTypeName}")]
+    [HttpGet]
     public ListDataDto GetListData(string entityTypeName)
     {
-        EntityType entityType = ListExtensions.ToEntityType(entityTypeName);
-        using StationContext ctx = new();
-
+        var entityType = ListExtensions.ToEntityType(entityTypeName);
+        
         // Get all relevant columns
-        List<Column> columns = ctx
+        List<Column> columns = _context
             .Columns
             .Where(c => c.EntityType == entityType)
             .ToList();
         // Get raw data
-        IQueryable query = ctx.GetQueryable(ListExtensions.ToTableName(entityTypeName));
+        IQueryable query = _context.GetQueryable(ListExtensions.ToTableName(entityTypeName));
 
         // For now, we only support field names.
         List<string> fieldNames = columns
@@ -68,7 +70,7 @@ public class ListController
             fieldNames.Add("Id");
         }
         
-        IQueryable cleanedQuery = query.AsNoTrackingDynamic(ctx).ColumnSelect(fieldNames);
+        IQueryable cleanedQuery = query.AsNoTrackingDynamic(_context).ColumnSelect(fieldNames);
         List<object> rows = cleanedQuery.Cast<object>().ToList();
 
         List<ListRowDto> rowDtos = [];

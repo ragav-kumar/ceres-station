@@ -36,20 +36,20 @@ public static class DynamicTypeBuilder
                 MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.HideBySig,
                 prop.PropertyType, Type.EmptyTypes);
 
-            ILGenerator getterIL = getterBuilder.GetILGenerator();
-            getterIL.Emit(OpCodes.Ldarg_0);
-            getterIL.Emit(OpCodes.Ldfld, fieldBuilder);
-            getterIL.Emit(OpCodes.Ret);
+            ILGenerator getterIl = getterBuilder.GetILGenerator();
+            getterIl.Emit(OpCodes.Ldarg_0);
+            getterIl.Emit(OpCodes.Ldfld, fieldBuilder);
+            getterIl.Emit(OpCodes.Ret);
 
             MethodBuilder setterBuilder = typeBuilder.DefineMethod($"set_{prop.Name}",
                 MethodAttributes.Public | MethodAttributes.SpecialName | MethodAttributes.HideBySig,
                 null, [prop.PropertyType]);
 
-            ILGenerator setterIL = setterBuilder.GetILGenerator();
-            setterIL.Emit(OpCodes.Ldarg_0);
-            setterIL.Emit(OpCodes.Ldarg_1);
-            setterIL.Emit(OpCodes.Stfld, fieldBuilder);
-            setterIL.Emit(OpCodes.Ret);
+            ILGenerator setterMsil = setterBuilder.GetILGenerator();
+            setterMsil.Emit(OpCodes.Ldarg_0);
+            setterMsil.Emit(OpCodes.Ldarg_1);
+            setterMsil.Emit(OpCodes.Stfld, fieldBuilder);
+            setterMsil.Emit(OpCodes.Ret);
 
             propertyBuilder.SetGetMethod(getterBuilder);
             propertyBuilder.SetSetMethod(setterBuilder);

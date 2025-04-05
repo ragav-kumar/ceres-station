@@ -4,27 +4,27 @@ namespace CeresStation.Core.Init;
 
 internal partial class DatabaseInitializer
 {
-    private readonly Guid waterElectrolyzerId = new("F8FD5BEC-6EF9-4811-90D1-4E85054CEB61");
-    private readonly Guid waterElectrolyzerReagentWaterId = new("D690A4C7-556B-4773-AEF6-4931F3324FB9");
-    private readonly Guid waterElectrolyzerReagentHydrogenId = new("FB110386-3BBF-4C70-BB1C-46A05FAD84C5");
-    private readonly Guid waterElectrolyzerReagentOxygenId = new("74AB4B64-6F7F-470E-AF72-E2A8FEC22F29");
+    private readonly Guid _waterElectrolyzerId = new("F8FD5BEC-6EF9-4811-90D1-4E85054CEB61");
+    private readonly Guid _waterElectrolyzerReagentWaterId = new("D690A4C7-556B-4773-AEF6-4931F3324FB9");
+    private readonly Guid _waterElectrolyzerReagentHydrogenId = new("FB110386-3BBF-4C70-BB1C-46A05FAD84C5");
+    private readonly Guid _waterElectrolyzerReagentOxygenId = new("74AB4B64-6F7F-470E-AF72-E2A8FEC22F29");
     
-    private readonly Position waterElectrolyzerPosition = new(-200.0e3, 0, 50.0e3);
+    private readonly Position _waterElectrolyzerPosition = new(-200.0e3, 0, 50.0e3);
     
     internal async Task Processors()
     {
         Console.WriteLine("Adding Processor: Water Electrolyzer");
-        ctx.Processors.Add(new Processor
+        _ctx.Processors.Add(new Processor
         {
-            Id = waterElectrolyzerId,
+            Id = _waterElectrolyzerId,
             Name = "Water Electrolyzer",
             TimeStep = RandomAround(3.0f),
-            Position = new Position(waterElectrolyzerPosition),
+            Position = new Position(_waterElectrolyzerPosition),
             Inputs = [
                 new Reagent
                 {
-                    Id = waterElectrolyzerReagentWaterId,
-                    ResourceId = waterId,
+                    Id = _waterElectrolyzerReagentWaterId,
+                    ResourceId = _waterId,
                     Count = 1.0f,
                     StockpileCapacity = 100.0f,
                 }
@@ -32,25 +32,25 @@ internal partial class DatabaseInitializer
             Outputs = [
                 new Reagent
                 {
-                    Id = waterElectrolyzerReagentHydrogenId,
-                    ResourceId = hydrogenId,
+                    Id = _waterElectrolyzerReagentHydrogenId,
+                    ResourceId = _hydrogenId,
                     Count = 0.888f,
                     StockpileCapacity = 100.0f,
                 },
                 new Reagent
                 {
-                    Id = waterElectrolyzerReagentOxygenId,
-                    ResourceId = oxygenId,
+                    Id = _waterElectrolyzerReagentOxygenId,
+                    ResourceId = _oxygenId,
                     Count = 0.112f,
                     StockpileCapacity = 100.0f,
                 }
             ],
         });
-        await ctx.SaveChangesAsync();
+        await _ctx.SaveChangesAsync();
         
         // Initialize List columns
         // TODO: Add support for calculated columns (i.e. reagent list)
-        ctx.Columns.AddRange(
+        _ctx.Columns.AddRange(
             new Column
             {
                 EntityType = EntityType.Processor,
@@ -98,6 +98,6 @@ internal partial class DatabaseInitializer
             }
         );
         
-        await ctx.SaveChangesAsync();
+        await _ctx.SaveChangesAsync();
     }
 }

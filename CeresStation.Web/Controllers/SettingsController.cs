@@ -1,4 +1,5 @@
 ﻿using CeresStation.Core;
+using CeresStation.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CeresStation.Web;
@@ -7,18 +8,24 @@ namespace CeresStation.Web;
 [Route("api/[controller]")]
 public class SettingsController : ControllerBase
 {
+    private readonly StationContext _context;
+
+    public SettingsController(StationContext context)
+    {
+        _context = context;
+    }
+
     [HttpGet("Money")]
     public async Task<long> GetMoney()
     {
-        await using StationContext ctx = new();
-        return ctx.FixedSettings().Money;
+        GeneralSetting settings = await _context.FixedSettingsAsync();
+        return settings.Money;
     }
 
     [HttpPut("Money")]
     public async Task<long> UpdateMoney(long moneyDelta)
     {
-        await using StationContext ctx = new();
-        await ctx.UpdateMoney(moneyDelta);
-        return ctx.FixedSettings().Money;
+        await _context.UpdateMoneyAsync(moneyDelta);
+        return await GetMoney();
     }
 }

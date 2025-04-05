@@ -1,15 +1,16 @@
 ﻿using CeresStation.Core;
 using CeresStation.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CeresStation.Web;
 
 internal static class SettingsExtensions
 {
-    internal static GeneralSetting FixedSettings(this StationContext ctx) => ctx.Settings.Single();
+    internal static async Task<GeneralSetting> FixedSettingsAsync(this StationContext ctx) => await ctx.Settings.SingleAsync();
 
-    internal static async Task UpdateMoney(this StationContext ctx, long delta)
+    internal static async Task UpdateMoneyAsync(this StationContext ctx, long delta)
     {
-        GeneralSetting settings = ctx.FixedSettings();
+        GeneralSetting settings = await ctx.FixedSettingsAsync();
         settings.Money += delta;
         await ctx.SaveChangesAsync();
     }

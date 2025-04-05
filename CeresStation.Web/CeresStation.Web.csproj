@@ -17,6 +17,8 @@
       <ProjectReference Include="..\CeresStation.Dto\CeresStation.Dto.csproj" />
       <ProjectReference Include="..\CeresStation.Context\CeresStation.Context.csproj" />
       <ProjectReference Include="..\CeresStation.GraphQl\CeresStation.GraphQl.csproj" />
+      <ProjectReference Include="..\CeresStation.Simulation\CeresStation.Simulation.csproj" />
+      <ProjectReference Include="..\CeresStation.TickService\CeresStation.TickService.csproj" />
     </ItemGroup>
 
 </Project>

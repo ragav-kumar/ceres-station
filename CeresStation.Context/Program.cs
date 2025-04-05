@@ -1,9 +1,11 @@
 ﻿using CeresStation.Core;
 using CeresStation.Core.Init;
 
-await using StationContext ctx = new();
+string dbPath = args.FirstOrDefault() ?? StationContext.DefaultDbPath;
 
-Console.WriteLine($"Database path: {ctx.DbPath}");
+await using StationContext ctx = new(dbPath);
+
+Console.WriteLine($"Database path: {dbPath}");
 
 // Initialize
 DatabaseInitializer initialize = new(ctx);
