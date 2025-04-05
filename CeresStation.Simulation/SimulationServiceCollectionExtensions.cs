@@ -14,13 +14,13 @@ public static class SimulationServiceCollectionExtensions
 
     private static void RegisterSimulation<T>(this IServiceCollection services) where T : class, ITickable
     {
-        services.AddSingleton<T>();
-        services.AddSingleton<ITickable>(sp =>
+        // services.AddScoped<T>();
+        services.AddScoped<ITickable, T>();/*sp =>
         {
             var simulation = sp.GetRequiredService<T>();
             var registry = sp.GetRequiredService<TickRegistry>();
             registry.Register(simulation);
             return simulation;
-        });
+        });*/
     }
 }

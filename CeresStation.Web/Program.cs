@@ -1,14 +1,10 @@
 using CeresStation.Context;
 using CeresStation.GraphQl;
-using CeresStation.Simulation;
-using CeresStation.TickService;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Path = System.IO.Path;
 
 const string myAllowSpecificOrigins = "_myAllowSpecificOrigins";
-
-Console.WriteLine($"Working dir: {Directory.GetCurrentDirectory()}");
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -29,12 +25,6 @@ builder.Services.AddControllers();
 builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen();
-
-// Setup TickService and simulations
-builder.Services
-    .AddSingleton<TickRegistry>()
-    .AddHostedService<TickService>()
-    .AddSimulation();
 
 builder.Services.AddCors(options =>
 {

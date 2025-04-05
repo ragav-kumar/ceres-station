@@ -4,7 +4,7 @@ using CeresStation.Dto;
 using CeresStation.Model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CeresStation.Web.Controllers;
+namespace CeresStation.Web;
 
 [ApiController]
 [Route("api/[controller]/{entityTypeName}")]

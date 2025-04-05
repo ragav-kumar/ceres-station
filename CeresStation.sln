@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeresStation.TickService", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeresStation.Simulation", "CeresStation.Simulation\CeresStation.Simulation.csproj", "{AB9FC63E-F137-45A6-8208-7070CAAF4655}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CeresStation.TickRunner", "CeresStation.TickRunner\CeresStation.TickRunner.csproj", "{47FBDCD9-9AFD-46DC-B6CE-7179B2EA3413}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{AB9FC63E-F137-45A6-8208-7070CAAF4655}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB9FC63E-F137-45A6-8208-7070CAAF4655}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB9FC63E-F137-45A6-8208-7070CAAF4655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47FBDCD9-9AFD-46DC-B6CE-7179B2EA3413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47FBDCD9-9AFD-46DC-B6CE-7179B2EA3413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47FBDCD9-9AFD-46DC-B6CE-7179B2EA3413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47FBDCD9-9AFD-46DC-B6CE-7179B2EA3413}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

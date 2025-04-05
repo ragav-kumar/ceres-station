@@ -1,6 +1,7 @@
 ﻿using CeresStation.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace CeresStation.Context;
 
@@ -39,8 +40,9 @@ public class StationContext : DbContext
         if (!options.IsConfigured && _connectionString is not null)
         {
             options
-                .UseSqlite(_connectionString)
-                .UseLazyLoadingProxies();
+                .UseSqlite(_connectionString, o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
+                .UseLazyLoadingProxies()
+                .ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
         }
     }
 
