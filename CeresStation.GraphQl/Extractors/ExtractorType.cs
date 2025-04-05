@@ -1,5 +1,4 @@
-﻿using CeresStation.Core;
-using CeresStation.Model;
+﻿using CeresStation.Model;
 
 namespace CeresStation.GraphQl;
 

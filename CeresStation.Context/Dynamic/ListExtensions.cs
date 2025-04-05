@@ -1,8 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 
-namespace CeresStation.Core;
+namespace CeresStation.Context;
 
 public static class ListExtensions
 {

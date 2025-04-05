@@ -1,5 +1,4 @@
-﻿using CeresStation.Core;
-using CeresStation.Dto;
+﻿using CeresStation.Dto;
 
 namespace CeresStation.GraphQl;
 

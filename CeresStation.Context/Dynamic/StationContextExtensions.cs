@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using CeresStation.Model;
 
-namespace CeresStation.Core;
+namespace CeresStation.Context;
 
 public static class StationContextExtensions
 {

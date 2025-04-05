@@ -81,7 +81,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Debug",
+    ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Run",
+    ".NET Project.CeresStation.Context.executor": "Run",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
@@ -95,6 +97,9 @@
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ],
     "GitStage.ChangesTree.GroupingKeys": [
       "directory",
       "module",
@@ -163,7 +168,8 @@
       <workItem from="1743554299936" duration="9000" />
       <workItem from="1743554311654" duration="4401000" />
       <workItem from="1743725441912" duration="2236000" />
-      <workItem from="1743818155837" duration="6363000" />
+      <workItem from="1743818155837" duration="7198000" />
+      <workItem from="1743825397188" duration="2829000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -189,7 +195,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743727072120</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Update to DI">
+      <option name="closed" value="true" />
+      <created>1743824626771</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1743824626771</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,7 +216,8 @@
     <MESSAGE value="Use specific DbSet when adding or removing" />
     <MESSAGE value="WIP" />
     <MESSAGE value="WIP. Pause GraphQL for now, maybe" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP. Pause GraphQL for now, maybe" />
+    <MESSAGE value="Update to DI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update to DI" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

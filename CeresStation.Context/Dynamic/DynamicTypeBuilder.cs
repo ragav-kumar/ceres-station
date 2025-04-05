@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace CeresStation.Core;
+namespace CeresStation.Context;
 
 /// <summary>
 /// Construct a dynamic DTO class that corresponds to the provided properties

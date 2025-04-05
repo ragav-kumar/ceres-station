@@ -1,6 +1,6 @@
 ﻿using CeresStation.Model;
 
-namespace CeresStation.Core.Init;
+namespace CeresStation.Context.Init;
 
 internal partial class DatabaseInitializer
 {

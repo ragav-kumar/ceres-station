@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-namespace CeresStation.Core;
+namespace CeresStation.Context;
 
 public class StationContext : DbContext
 {
@@ -18,16 +18,7 @@ public class StationContext : DbContext
     public DbSet<EntityBase> Entities => Set<EntityBase>();
     public DbSet<GeneralSetting> Settings => Set<GeneralSetting>();
 
-    public static string DefaultDbPath
-    {
-        get
-        {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            return Path.Join(path, "CeresStation.db");
-        }
-    }
-
-    private readonly string? _dbPath;
+    private readonly string? _connectionString;
 
     // For ASP.NET Core DI
     public StationContext(DbContextOptions<StationContext> options)
@@ -36,19 +27,19 @@ public class StationContext : DbContext
     }
     
     // For usage from console
-    public StationContext(string dbPath)
+    public StationContext(string connectionString)
     {
-        _dbPath = dbPath;
+        _connectionString = connectionString;
     }
 
     // The following configures EF to create a Sqlite database file in the
     // special "local" folder for your platform.
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        if (!options.IsConfigured && _dbPath is not null)
+        if (!options.IsConfigured && _connectionString is not null)
         {
             options
-                .UseSqlite($"Data Source={_dbPath}")
+                .UseSqlite(_connectionString)
                 .UseLazyLoadingProxies();
         }
     }

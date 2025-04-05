@@ -22,8 +22,8 @@ public class TickService : BackgroundService
             await Tick(token);
 
             long elapsed = Stopwatch.GetTimestamp() - start;
-            long elapseMilliseconds = elapsed * 1000 / Stopwatch.Frequency;
-            long remaining = Math.Max(0, _tickDuration.Milliseconds - elapseMilliseconds);
+            double elapseMilliseconds = elapsed * 1000.0 / Stopwatch.Frequency;
+            var remaining = (long)Math.Max(0, _tickDuration.TotalMilliseconds - elapseMilliseconds);
 
             await Task.Delay(TimeSpan.FromMilliseconds(remaining), token);
         }

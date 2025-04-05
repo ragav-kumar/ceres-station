@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 namespace CeresStation.Model;
 
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
-[PrimaryKey(nameof(Id))]
 public class Reagent
 {
 	public Guid Id { get; set; }

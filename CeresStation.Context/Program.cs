@@ -1,7 +1,7 @@
-﻿using CeresStation.Core;
-using CeresStation.Core.Init;
+﻿using CeresStation.Context;
+using CeresStation.Context.Init;
 
-string dbPath = args.FirstOrDefault() ?? StationContext.DefaultDbPath;
+string dbPath = args.FirstOrDefault() ?? $"Data Source={Path.Combine(AppContext.BaseDirectory, @"..\..\..\..\CeresStation.db")}";
 
 await using StationContext ctx = new(dbPath);
 

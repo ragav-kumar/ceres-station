@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace CeresStation.Core.Configurations;
+namespace CeresStation.Context;
 
 public class EntityBaseConfiguration : IEntityTypeConfiguration<EntityBase>
 {
