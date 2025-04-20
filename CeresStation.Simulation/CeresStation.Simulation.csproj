@@ -12,7 +12,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\CeresStation.Context\CeresStation.Context.csproj" />
-      <ProjectReference Include="..\CeresStation.TickService\CeresStation.TickService.csproj" />
     </ItemGroup>
 
 </Project>

@@ -5,18 +5,15 @@ namespace CeresStation.TickRunner;
 public class TickService
 {
     private readonly TimeSpan _tickDuration = TimeSpan.FromSeconds(1);
-    
-    public TickService()
-    {
-    }
 
-    private async Task RunAsync(CancellationToken token)
+    public async Task RunAsync(CancellationToken token)
     {
         while (!token.IsCancellationRequested)
         {
             long start = Stopwatch.GetTimestamp();
 
-            await Tick(token);
+            // tick simulations from registry
+            await TickRegistry.Instance.TickAllSimulationsAsync(token);
 
             long elapsed = Stopwatch.GetTimestamp() - start;
             double elapseMilliseconds = elapsed * 1000.0 / Stopwatch.Frequency;
@@ -24,10 +21,5 @@ public class TickService
 
             await Task.Delay(TimeSpan.FromMilliseconds(remaining), token);
         }
-    }
-
-    private async Task Tick(CancellationToken token)
-    {
-        // TODO
     }
 }

@@ -1,11 +1,12 @@
 ﻿using System.Collections.Concurrent;
+using CeresStation.Simulation;
 
 namespace CeresStation.TickRunner;
 
 public class TickRegistry
 {
-    private readonly ConcurrentDictionary<string, ITickable> _tickables = [];
-    private string _connectionString;
+    private readonly ConcurrentDictionary<string, ISimulation> _simulations = [];
+    private string _connectionString = string.Empty;
     
     private static readonly Lazy<TickRegistry> instance = new(() => new TickRegistry());
     public static TickRegistry Instance => instance.Value;
@@ -19,15 +20,20 @@ public class TickRegistry
         instance.Value._connectionString = connectionString;
     }
     
-    public void Register(ITickable tickable)
+    public void Register(ISimulation simulation)
     {
-        _tickables[tickable.Key] = tickable;
+        _simulations[simulation.Key] = simulation;
     }
 
-    public void Unregister(ITickable tickable)
+    public void Unregister(ISimulation simulation)
     {
-        _tickables.Remove(tickable.Key, out _);
+        _simulations.Remove(simulation.Key, out _);
     }
-    
-    public IEnumerable<ITickable> Snapshot() => _tickables.Values;
+
+    public async Task TickAllSimulationsAsync(CancellationToken cancellationToken)
+    {
+        IEnumerable<ISimulation> snapshot = _simulations.Values;
+        IEnumerable<Task> tasks = snapshot.Select(o => o.TickAsync(_connectionString, cancellationToken));
+        await Task.WhenAll(tasks);
+    }
 }

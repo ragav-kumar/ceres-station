@@ -65,7 +65,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2fb4ce5c5d48d4171f81a8112b65aa49196f0048576d4c9c280de41e6ff44/ConfigurationBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ce37be1a06b16c6faa02038d2cc477dd3bca5b217ceeb41c5f2ad45c1bf9/ServiceProvider.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dd6c73164669d1ec65499e7c8e9b99d6226395deda5230fc20ae28a332b2acc7/Mutex.Windows.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de533de9e7b3ea79d36aeac96b6426559cfe9f3a96b1ab66b51ce3febeda25f/TimeSpan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e9881a453a581134c1a18331ac1f8f1201a5382a685bf2a40777fa22619/DbContextOptions`.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4fea0d1211378df8498212882515b365921d28ffed32bc4ffe5fcdf17d140/ConcurrentBag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CeresStation.Simulation/Simulations/ExtractorSimulation.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -89,6 +91,7 @@
   "keyToString": {
     ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Run",
     ".NET Project.CeresStation.Context.executor": "Run",
+    ".NET Project.CeresStation.TickRunner.executor": "Debug",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -134,7 +137,7 @@
     </configuration>
     <configuration name="CeresStation.TickRunner" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/CeresStation.TickRunner/bin/Debug/net9.0/CeresStation.TickRunner.exe" />
-      <option name="PROGRAM_PARAMETERS" value="--ConnectionString=&quot;Data Source=..\..\..\..\CeresStation.db&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="--ConnectionString &quot;Data Source=..\..\..\..\CeresStation.db&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CeresStation.TickRunner/bin/Debug/net9.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -219,7 +222,8 @@
       <workItem from="1743725441912" duration="2236000" />
       <workItem from="1743818155837" duration="7198000" />
       <workItem from="1743825397188" duration="2852000" />
-      <workItem from="1743871972819" duration="10029000" />
+      <workItem from="1743871972819" duration="10778000" />
+      <workItem from="1745167634552" duration="5825000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -261,7 +265,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743828245874</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="WIP">
+      <option name="closed" value="true" />
+      <created>1743882923429</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743882923429</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,14 +281,25 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Use specific DbSet when adding or removing" />
-    <MESSAGE value="WIP" />
     <MESSAGE value="WIP. Pause GraphQL for now, maybe" />
     <MESSAGE value="Update to DI" />
     <MESSAGE value="fix up db" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix up db" />
+    <MESSAGE value="WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

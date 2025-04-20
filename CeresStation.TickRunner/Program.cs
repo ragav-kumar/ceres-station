@@ -1,4 +1,6 @@
-﻿using CeresStation.TickRunner;
+﻿using System.CommandLine;
+using CeresStation.Simulation;
+using CeresStation.TickRunner;
 
 const string mutexName = "Global\\CERES_STATION_TICK_SERVICE";
 using var mutex = new Mutex(true, mutexName, out bool createdNew);
@@ -9,39 +11,48 @@ if (!createdNew)
     return;
 }
 
-string GetNamedArgument(string name)
+Option<string> connectionStringOption = new(
+    "--ConnectionString",
+    "Database connection string"
+)
 {
-    var prefix = $"--{name}=";
-    return args
-        .Where(arg => arg.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-        .Select(arg => arg.Substring(prefix.Length))
-        .FirstOrDefault()
-        ?? throw new ArgumentNullException(name, $"The argument '{name}' was not found.");
-}
+    IsRequired = true
+};
 
-if (args.Length < 1 || string.IsNullOrWhiteSpace(args[0]))
+RootCommand rootCommand = [connectionStringOption];
+rootCommand.Description = "Ceres Station Tick Runner";
+rootCommand.SetHandler(connectionString =>
 {
-    throw new ArgumentException("Must specify connection string with '-ConnectionString <connection string>'.");
-}
+    TickRegistry.Init(connectionString);
+    foreach (ISimulation simulation in SimulationExtensions.Simulations)
+    {
+        TickRegistry.Instance.Register(simulation);
+    }
+}, connectionStringOption);
 
-string connectionString = GetNamedArgument("ConnectionString");
-TickRegistry.Init(connectionString);
+await rootCommand.InvokeAsync(args);
 
-using var tokenSource = new CancellationTokenSource();
-
+using CancellationTokenSource tokenSource = new();
 Console.CancelKeyPress += (_, eventArgs) =>
 {
     Console.WriteLine("Shutting down...");
     eventArgs.Cancel = true;
+    // ReSharper disable once AccessToDisposedClosure
     tokenSource.Cancel();
 };
 
-
-
 Console.WriteLine("TickRunner started. Press Ctrl+C to exit.");
 
-await tickService.RunAsync(tokenSource.Token);
-
-Console.WriteLine("TickRunner stopped.");
-
-mutex.ReleaseMutex();
+TickService tickService = new();
+try
+{
+    await tickService.RunAsync(tokenSource.Token);
+}
+catch (TaskCanceledException)
+{
+    Console.WriteLine("TickRunner stopped.");
+}
+finally
+{
+    mutex.ReleaseMutex();
+}
