@@ -4,5 +4,6 @@ public record ReagentDto(
     Guid? Id,
     ResourceDto? Resource,
     float? Count,
-    float? StockpileCapacity
+    float? Stockpile,
+    float? Capacity
 );

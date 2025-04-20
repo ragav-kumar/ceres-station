@@ -116,7 +116,12 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.CeresStation.TickRunner">
+  <component name="RunManager" selected=".NET Project.CeresStation.Context">
+    <configuration name="REST API + TickRunner" type="CompoundRunConfigurationType">
+      <toRun name="CeresStation.Web: http" type="LaunchSettings" />
+      <toRun name="CeresStation.TickRunner" type="DotNetProject" />
+      <method v="2" />
+    </configuration>
     <configuration name="CeresStation.Context" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -149,24 +154,6 @@
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
       <option name="PROJECT_TFM" value="net9.0" />
-      <method v="2">
-        <option name="Build" />
-      </method>
-    </configuration>
-    <configuration name="CeresStation.TickService" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="USE_MONO" value="0" />
-      <option name="RUNTIME_ARGUMENTS" value="" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/CeresStation.TickService/CeresStation.TickService.csproj" />
-      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
-      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
-      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
-      <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -206,7 +193,7 @@
       <item itemvalue=".NET Launch Settings Profile.CeresStation.Web: https" />
       <item itemvalue=".NET Project.CeresStation.Context" />
       <item itemvalue=".NET Project.CeresStation.TickRunner" />
-      <item itemvalue=".NET Project.CeresStation.TickService" />
+      <item itemvalue="Compound.REST API + TickRunner" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -223,7 +210,7 @@
       <workItem from="1743818155837" duration="7198000" />
       <workItem from="1743825397188" duration="2852000" />
       <workItem from="1743871972819" duration="10778000" />
-      <workItem from="1745167634552" duration="6761000" />
+      <workItem from="1745167634552" duration="8372000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -281,7 +268,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745174053164</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="clean up save changes">
+      <option name="closed" value="true" />
+      <created>1745174662742</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1745174662742</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,7 +303,8 @@
     <MESSAGE value="fix up db" />
     <MESSAGE value="WIP" />
     <MESSAGE value="First place implementation of TickRunner" />
-    <option name="LAST_COMMIT_MESSAGE" value="First place implementation of TickRunner" />
+    <MESSAGE value="clean up save changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="clean up save changes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

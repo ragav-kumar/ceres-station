@@ -25,8 +25,9 @@ internal partial class DatabaseInitializer
                 {
                     Id = _waterElectrolyzerReagentWaterId,
                     ResourceId = _waterId,
-                    Count = 1.0f,
-                    StockpileCapacity = 100.0f,
+                    ProcessRate = 1.0f,
+                    Stockpile = 0f,
+                    Capacity = 100.0f,
                 }
             ],
             Outputs = [
@@ -34,15 +35,17 @@ internal partial class DatabaseInitializer
                 {
                     Id = _waterElectrolyzerReagentHydrogenId,
                     ResourceId = _hydrogenId,
-                    Count = 0.888f,
-                    StockpileCapacity = 100.0f,
+                    ProcessRate = 0.888f,
+                    Stockpile = 0f,
+                    Capacity = 100.0f,
                 },
                 new Reagent
                 {
                     Id = _waterElectrolyzerReagentOxygenId,
                     ResourceId = _oxygenId,
-                    Count = 0.112f,
-                    StockpileCapacity = 100.0f,
+                    ProcessRate = 0.112f,
+                    Stockpile = 0f,
+                    Capacity = 100.0f,
                 }
             ],
         });

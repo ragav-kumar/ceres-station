@@ -67,17 +67,18 @@ public partial class ProcessorsController
     private static Reagent CreateReagentFromDto(ReagentDto dto) => new()
     {
         Id = Guid.NewGuid(),
-        Count = dto.Count ?? 0,
-        StockpileCapacity = dto.StockpileCapacity ?? 0,
+        ProcessRate = dto.Count ?? 0,
+        Stockpile = dto.Stockpile ?? 0,
+        Capacity = dto.Capacity ?? 0,
         ResourceId = dto.Resource?.Id ?? throw new InvalidOperationException("Resource id must be specified."),
     };
 
     private static void ApplyDto(Reagent model, ReagentDto dto)
     {
         if (dto.Count is not null)
-            model.Count = dto.Count.Value;
-        if (dto.StockpileCapacity is not null)
-            model.StockpileCapacity = dto.StockpileCapacity.Value;
+            model.ProcessRate = dto.Count.Value;
+        if (dto.Capacity is not null)
+            model.Capacity = dto.Capacity.Value;
         if (dto.Resource is not null)
             model.ResourceId = dto.Resource.Id;
     }
