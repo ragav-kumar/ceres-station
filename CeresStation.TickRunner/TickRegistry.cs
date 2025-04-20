@@ -1,5 +1,7 @@
 ﻿using System.Collections.Concurrent;
+using CeresStation.Context;
 using CeresStation.Simulation;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CeresStation.TickRunner;
 
@@ -32,8 +34,13 @@ public class TickRegistry
 
     public async Task TickAllSimulationsAsync(CancellationToken cancellationToken)
     {
-        IEnumerable<ISimulation> snapshot = _simulations.Values;
-        IEnumerable<Task> tasks = snapshot.Select(o => o.TickAsync(_connectionString, cancellationToken));
-        await Task.WhenAll(tasks);
+        await using StationContext ctx = new(_connectionString);
+        
+        foreach (ISimulation simulation in _simulations.Values)
+        {
+            await simulation.TickAsync(ctx, cancellationToken);
+        }
+            
+        await ctx.SaveChangesAsync(cancellationToken);
     }
 }

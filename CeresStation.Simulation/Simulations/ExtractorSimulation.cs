@@ -9,10 +9,8 @@ public class ExtractorSimulation : ISimulation
 
     public string Key => "extractor_simulation";
 
-    public async Task TickAsync(string connectionString, CancellationToken cancellationToken)
+    public Task TickAsync(StationContext ctx, CancellationToken _)
     {
-        await using StationContext ctx = new(connectionString);
-        
         foreach (Extractor extractor in ctx.Extractors.Where(o => o.Stockpile < o.Capacity))
         {
             // Apply Gaussian fluctuation to the extraction rate
@@ -22,6 +20,6 @@ public class ExtractorSimulation : ISimulation
             extractor.Stockpile = newValue;
         }
 
-        await ctx.SaveChangesAsync(cancellationToken);
+        return Task.CompletedTask;
     }
 }
