@@ -1,15 +1,14 @@
-﻿using CeresStation.Model;
-
-namespace CeresStation.Dto;
+﻿namespace CeresStation.Dto;
 
 public record TransportDto(
     Guid? Id,
     string? Name,
     PositionDto? Position,
-    float? TripTimeStandardDeviation,
-    float? CurrentCargo,
+    float? Acceleration,
+    float? StandardDeviation,
+    float? Stockpile,
     float? Capacity,
-    EntityDto? Source,
-    EntityDto? Destination,
-    ResourceDto? Resource
+    TransportRouteDto? Route,
+    ResourceDto? CargoType,
+    int? NextWaypointIndex
 );

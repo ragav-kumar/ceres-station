@@ -11,6 +11,8 @@ if (!createdNew)
     return;
 }
 
+ISimulationRandomizer randomizer = new SimulationRandomizer();
+
 Option<string> connectionStringOption = new(
     "--ConnectionString",
     "Database connection string"
@@ -24,7 +26,9 @@ rootCommand.Description = "Ceres Station Tick Runner";
 rootCommand.SetHandler(connectionString =>
 {
     TickRegistry.Init(connectionString);
-    foreach (ISimulation simulation in SimulationExtensions.Simulations)
+    List<ISimulation> simulations = SimulationExtensions.GetSimulations(randomizer);
+    
+    foreach (ISimulation simulation in simulations)
     {
         TickRegistry.Instance.Register(simulation);
     }

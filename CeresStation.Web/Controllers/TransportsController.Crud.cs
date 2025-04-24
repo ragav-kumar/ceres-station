@@ -12,11 +12,12 @@ public partial class TransportsController
         Name = "New Transport",
         Position = Position.Origin,
         Capacity = 0,
-        CurrentCargo = 0,
-        TripTimeStandardDeviation = 0,
-        SourceId = Guid.Empty,
-        DestinationId = Guid.Empty,
-        ResourceId = Guid.Empty,
+        Stockpile = 0,
+        StandardDeviation = 0,
+        Acceleration = 0f,
+        RouteId = Guid.Empty,
+        CargoTypeId = Guid.Empty,
+        NextWaypointIndex = 0,
     };
 
     protected override void ApplyDto(Transport model, TransportDto dto, StationContext ctx)
@@ -27,16 +28,18 @@ public partial class TransportsController
             model.Position = dto.Position.ToModel();
         if (dto.Capacity is not null)
             model.Capacity = dto.Capacity.Value;
-        if (dto.TripTimeStandardDeviation is not null)
-            model.TripTimeStandardDeviation = dto.TripTimeStandardDeviation.Value;
-        if (dto.CurrentCargo is not null)
-            model.CurrentCargo = dto.CurrentCargo.Value;
-        if (dto.Source?.Id is not null)
-            model.SourceId = dto.Source.Id.Value;
-        if (dto.Destination?.Id is not null)
-            model.DestinationId = dto.Destination.Id.Value;
-        if (dto.Resource is not null)
-            model.ResourceId = dto.Resource.Id;
+        if (dto.StandardDeviation is not null)
+            model.StandardDeviation = dto.StandardDeviation.Value;
+        if (dto.Stockpile is not null)
+            model.Stockpile = dto.Stockpile.Value;
+        if (dto.CargoType is not null)
+            model.CargoTypeId = dto.CargoType.Id;
+        if (dto.NextWaypointIndex is not null)
+            model.NextWaypointIndex = dto.NextWaypointIndex.Value;
+        if (dto.Route?.Id != null)
+            model.RouteId = dto.Route.Id.Value;
+        if (dto.Acceleration is not null)
+            model.Acceleration = dto.Acceleration.Value;
     }
 
     protected override Guid GetId(Transport model) => model.Id;
@@ -46,11 +49,12 @@ public partial class TransportsController
         Id: model.Id,
         Name: model.Name,
         Position: model.Position.ToDto(),
-        TripTimeStandardDeviation: model.TripTimeStandardDeviation,
-        CurrentCargo: model.CurrentCargo,
+        StandardDeviation: model.StandardDeviation,
+        Stockpile: model.Stockpile,
         Capacity: model.Capacity,
-        Source: model.Source.ToDto(),
-        Destination: model.Destination.ToDto(),
-        Resource: model.Resource.ToDto()
+        CargoType: model.CargoType?.ToDto(),
+        NextWaypointIndex: model.NextWaypointIndex,
+        Acceleration: model.Acceleration,
+        Route: model.Route.ToDto()
     );
 }

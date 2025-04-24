@@ -3,10 +3,8 @@ using CeresStation.Model;
 
 namespace CeresStation.Simulation;
 
-public class ExtractorSimulation : ISimulation
+public class ExtractorSimulation(ISimulationRandomizer randomizer) : ISimulation
 {
-    private readonly Random _random = Random.Shared;
-
     public string Key => "extractor_simulation";
 
     public Task TickAsync(StationContext ctx, CancellationToken _)
@@ -22,7 +20,7 @@ public class ExtractorSimulation : ISimulation
     private void AddToStockPile(Extractor extractor)
     {
         // Apply Gaussian fluctuation to the extraction rate
-        float actualExtraction = _random.NextGaussian(extractor.ExtractionRate, extractor.StandardDeviation);
+        float actualExtraction = randomizer.NextGaussian(extractor.ExtractionRate, extractor.StandardDeviation);
 
         float newValue = MathF.Min(extractor.Capacity, extractor.Stockpile + actualExtraction);
         extractor.Stockpile = newValue;

@@ -3,11 +3,11 @@ using CeresStation.Model;
 
 namespace CeresStation.Simulation;
 
-public class ConsumerSimulation : ISimulation
+public class ConsumerSimulation(ISimulationRandomizer randomizer) : ISimulation
 {
     public string Key => "consumer_simulation";
 
-    public Task TickAsync(StationContext ctx, CancellationToken cancellationToken)
+    public Task TickAsync(StationContext ctx, CancellationToken _)
     {
         foreach (Consumer consumer in ctx.Consumers)
         {
@@ -19,6 +19,14 @@ public class ConsumerSimulation : ISimulation
 
     private void ConsumeResources(Consumer consumer)
     {
-        throw new NotImplementedException();
+        // Apply Gaussian fluctuation to the extraction rate
+        float actualConsumption = randomizer.NextGaussian(consumer.ConsumptionRate, consumer.StandardDeviation);
+
+        if (actualConsumption > consumer.Stockpile)
+        {
+            // TODO: Consequences for not feeding the consumer?
+        }
+        
+        consumer.Stockpile -= actualConsumption;
     }
 }

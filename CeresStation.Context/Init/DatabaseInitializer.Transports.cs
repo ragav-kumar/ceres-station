@@ -1,25 +1,31 @@
 ﻿using CeresStation.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace CeresStation.Context.Init;
 
 internal partial class DatabaseInitializer
 {
-    private readonly Guid _iceMineToElectrolyzerId = new("D0305868-9C84-4DB5-9943-9EE0705EEA7F");
-    private readonly Guid _iceMineToHabitatId = new("26416949-9CFE-447B-AB93-3E0BF00392B0");
-    private readonly Guid _electrolyzerToHabitatOxygenId = new("221454DB-437E-4B7E-A70B-37E70A64DB26");
-    private readonly Guid _electrolyzerToPowerOxygenId = new("8A493E52-3022-47D7-A154-1D55119F1747");
-    private readonly Guid _electrolyzerToPowerHydrogenId = new("04C2EAE5-823F-4A60-ADC0-CD9CEAEAA87E");
-    private readonly Guid _electrolyzerToHydrogenVentId = new("0C3AE05E-EA7E-4EF7-9BD5-C1A1E04C3A51");
+    // Routes
+    
+    // Transports
+    private readonly Guid _transport1Id = new("26416949-9CFE-447B-AB93-3E0BF00392B0");
+    private readonly Guid _transport2Id = new("221454DB-437E-4B7E-A70B-37E70A64DB26");
+    private readonly Guid _transport3Id = new("04C2EAE5-823F-4A60-ADC0-CD9CEAEAA87E");
+    private readonly Guid _transport4Id = new("801F40B0-BDF6-459A-AC81-8C5551B0A44E");
+    private readonly Guid _transport5Id = new("790A3289-4FD0-4340-BEF5-34907B974D77");
+    private readonly Guid _transport6Id = new("B1B81E35-19AD-4D7A-9375-CC7DE63A11E0");
+    private readonly Guid _transport7Id = new("BD291046-BE3B-409A-B125-9317E8F92745");
     
     internal async Task Transports()
     {
-        await AddTransport("Electrolyzer Water supply shuttle", _iceMineToElectrolyzerId, _waterId, _iceMineId, _waterElectrolyzerId);
-        await AddTransport("Habitat Water supply shuttle", _iceMineToHabitatId, _waterId, _iceMineId, _habitatWaterSupplyId);
-        await AddTransport("Habitat Oxygen supply shuttle", _electrolyzerToHabitatOxygenId, _oxygenId, _waterElectrolyzerId, _habitatAirSupplyId);
-        await AddTransport("Power station Oxidizer supply shuttle", _electrolyzerToPowerOxygenId, _oxygenId, _waterElectrolyzerId, _powerStationOxidizerId);
-        await AddTransport("Power station Fuel supply shuttle", _electrolyzerToPowerHydrogenId, _hydrogenId, _waterElectrolyzerId, _powerStationFuelId);
-        await AddTransport("Hydrogen disposal conduit", _electrolyzerToHydrogenVentId, _hydrogenId, _waterElectrolyzerId, _hydrogenVentId);
-        
+        await AddTransport("Hell's Nose"     , _transport1Id, _waterId   , _iceMineToElectrolyzerRouteId);
+        await AddTransport("Void Hauler"     , _transport2Id, _waterId   , _iceMineToElectrolyzerToHabitatRouteId);
+        await AddTransport("Iron Widow"      , _transport3Id, _waterId   , _iceMineToElectrolyzerToHabitatRouteId);
+        await AddTransport("Nebula Jack"     , _transport4Id, _oxygenId  , _electrolyzerToHabitatRouteId);
+        await AddTransport("Graveline Runner", _transport5Id, _oxygenId  , _electrolyzerToPowerRouteId);
+        await AddTransport("Red Dust Express", _transport6Id, _hydrogenId, _electrolyzerToPowerRouteId);
+        await AddTransport("The Black Spur"  , _transport7Id, _hydrogenId, _electrolyzerToHydrogenVentRouteId);
+
         // Initialize List columns
         _ctx.Columns.AddRange(
             new Column
@@ -36,18 +42,9 @@ internal partial class DatabaseInitializer
                 EntityType = EntityType.Transport,
                 Order = 1,
                 FieldType = FieldType.Model,
-                DisplayName = "Source",
+                DisplayName = "Route",
                 Width = 100,
-                FieldName = "Source",
-            },
-            new Column
-            {
-                EntityType = EntityType.Transport,
-                Order = 2,
-                FieldType = FieldType.Model,
-                DisplayName = "Destination",
-                Width = 100,
-                FieldName = "Destination",
+                FieldName = "Route",
             },
             new Column
             {
@@ -56,7 +53,7 @@ internal partial class DatabaseInitializer
                 FieldType = FieldType.Model,
                 DisplayName = "Resource",
                 Width = 100,
-                FieldName = "Resource",
+                FieldName = "CargoType",
             },
             new Column
             {
@@ -65,7 +62,7 @@ internal partial class DatabaseInitializer
                 FieldType = FieldType.Model,
                 DisplayName = "Current Cargo",
                 Width = 100,
-                FieldName = "CurrentCargo",
+                FieldName = "Stockpile",
             },
             new Column
             {
@@ -81,32 +78,37 @@ internal partial class DatabaseInitializer
                 EntityType = EntityType.Transport,
                 Order = 6,
                 FieldType = FieldType.Model,
-                DisplayName = "Trip time standard deviation",
+                DisplayName = "Average Acceleration",
                 Width = 100,
-                FieldName = "TripTimeStandardDeviation",
+                FieldName = "Acceleration",
             }
         );
         await _ctx.SaveChangesAsync();
     }
 
-    private async Task AddTransport(string transportName, Guid transportId, Guid resourceId, Guid sourceId, Guid destinationId)
+    private async Task AddTransport(string transportName, Guid transportId, Guid resourceId, Guid routeId)
     {
         Console.WriteLine($"Adding transport: {transportName}");
         
-        EntityBase source = _ctx.Entities.Single(o => o.Id == sourceId);
-        Position sourcePosition = source.Position;
+        TransportRoute route = _ctx
+            .TransportRoutes
+            .Include(transportRoute => transportRoute.Waypoints)
+            .Single(o => o.Id == routeId);
+        
+        Position position = route.WaypointEntities.First().Position;
         
         _ctx.Transports.Add(new Transport
         {
             Id = transportId,
             Name = transportName,
-            Position = new Position(sourcePosition),
-            SourceId = sourceId,
-            DestinationId = destinationId,
-            ResourceId = resourceId,
-            CurrentCargo = 0,
+            Position = new Position(position),
+            CargoTypeId = resourceId,
+            Stockpile = 0,
             Capacity = RandomAround(50.0f),
-            TripTimeStandardDeviation = RandomAround(0.1f)
+            Acceleration = RandomAround(0.018f),
+            StandardDeviation = RandomAround(0.002f),
+            RouteId = routeId,
+            NextWaypointIndex = 0
         });
         await _ctx.SaveChangesAsync();
     }

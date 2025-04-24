@@ -10,4 +10,6 @@ public static class EntityBaseExtensions
         Name: entity.Name,
         Position: entity.Position
     );
+    
+    public static IEnumerable<EntityDto> ToDto(this IEnumerable<EntityBase> entities) => entities.Select(ToDto);
 }

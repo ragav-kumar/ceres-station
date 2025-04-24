@@ -90,7 +90,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Run",
-    ".NET Project.CeresStation.Context.executor": "Run",
+    ".NET Project.CeresStation.Context.executor": "Debug",
     ".NET Project.CeresStation.TickRunner.executor": "Debug",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -210,7 +210,8 @@
       <workItem from="1743818155837" duration="7198000" />
       <workItem from="1743825397188" duration="2852000" />
       <workItem from="1743871972819" duration="10778000" />
-      <workItem from="1745167634552" duration="8372000" />
+      <workItem from="1745167634552" duration="9255000" />
+      <workItem from="1745461409081" duration="9742000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -276,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745174662742</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="finished processor simulation">
+      <option name="closed" value="true" />
+      <created>1745176276416</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1745176276416</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,7 +313,27 @@
     <MESSAGE value="WIP" />
     <MESSAGE value="First place implementation of TickRunner" />
     <MESSAGE value="clean up save changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean up save changes" />
+    <MESSAGE value="finished processor simulation" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished processor simulation" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.TransportRoutes.cs</url>
+          <line>25</line>
+          <properties documentPath="C:\repos\ceres-station\CeresStation.Context\Init\DatabaseInitializer.TransportRoutes.cs" containingFunctionPresentation="Method 'AddTransportRoute'">
+            <startOffsets>
+              <option value="1583" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1985" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

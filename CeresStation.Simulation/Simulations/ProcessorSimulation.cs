@@ -3,12 +3,11 @@ using CeresStation.Model;
 
 namespace CeresStation.Simulation;
 
-public class ProcessorSimulation : ISimulation
+public class ProcessorSimulation(ISimulationRandomizer randomizer) : ISimulation
 {
-    private readonly Random _random = Random.Shared;
     public string Key => "processor_simulation";
     
-    public Task TickAsync(StationContext ctx, CancellationToken cancellationToken)
+    public Task TickAsync(StationContext ctx, CancellationToken _)
     {
         foreach (Processor processor in ctx.Processors)
         {
@@ -25,8 +24,8 @@ public class ProcessorSimulation : ISimulation
             return;
         }
 
-        UpdateInputs(processor);
-        UpdateOutputs(processor);
+        ConsumeInputs(processor);
+        GenerateOutputs(processor);
     }
 
     private static bool HaveEnoughInputs(Processor processor) => processor
@@ -41,7 +40,7 @@ public class ProcessorSimulation : ISimulation
             reagent.Capacity >= reagent.ProcessRate / processor.TimeStep + reagent.Stockpile
         );
 
-    private static void UpdateInputs(Processor processor)
+    private static void ConsumeInputs(Processor processor)
     {
         foreach (Reagent input in processor.Inputs)
         {
@@ -49,7 +48,7 @@ public class ProcessorSimulation : ISimulation
         }
     }
 
-    private static void UpdateOutputs(Processor processor)
+    private static void GenerateOutputs(Processor processor)
     {
         foreach (Reagent output in processor.Outputs)
         {

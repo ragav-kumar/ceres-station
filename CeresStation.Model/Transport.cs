@@ -6,15 +6,16 @@ namespace CeresStation.Model;
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public class Transport : EntityBase
 {
-    public required float TripTimeStandardDeviation { get; set; }
-    public required float CurrentCargo { get; set; }
+    public required float Acceleration { get; set; }
+    public required float StandardDeviation { get; set; }
+    
+    public required float Stockpile { get; set; }
     public required float Capacity { get; set; }
     
+    public Guid? CargoTypeId { get; set; }
+    public virtual Resource? CargoType { get; set; }
     
-    public required Guid SourceId { get; set; }
-    public virtual EntityBase Source { get; set; }
-    public required Guid DestinationId { get; set; }
-    public virtual EntityBase Destination { get; set; }
-    public required Guid ResourceId { get; set; }
-    public virtual Resource Resource { get; set; }
+    public required Guid RouteId { get; set; }
+    public virtual TransportRoute Route { get; set; }
+    public required int NextWaypointIndex { get; set; }
 }

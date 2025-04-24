@@ -18,6 +18,7 @@ public class StationContext : DbContext
     public DbSet<Transport> Transports => Set<Transport>();
     public DbSet<EntityBase> Entities => Set<EntityBase>();
     public DbSet<GeneralSetting> Settings => Set<GeneralSetting>();
+    public DbSet<TransportRoute> TransportRoutes => Set<TransportRoute>();
 
     private readonly string? _connectionString;
 

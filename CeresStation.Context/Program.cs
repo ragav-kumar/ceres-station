@@ -17,17 +17,27 @@ await ctx.Database.EnsureDeletedAsync();
 Console.WriteLine("Recreating database...");
 await ctx.Database.EnsureCreatedAsync();
 
+Console.WriteLine();
 Console.WriteLine("Initializing settings...");
 await initialize.Settings();
+Console.WriteLine();
 Console.WriteLine("Initializing resources...");
 await initialize.Resources();
+Console.WriteLine();
 Console.WriteLine("Initializing extractors...");
 await initialize.Extractors();
+Console.WriteLine();
 Console.WriteLine("Initializing processors...");
 await initialize.Processors();
+Console.WriteLine();
 Console.WriteLine("Initializing consumers...");
 await initialize.Consumers();
+Console.WriteLine();
+Console.WriteLine("Initializing transport routes...");
+await initialize.TransportRoutes();
+Console.WriteLine();
 Console.WriteLine("Initializing transports...");
 await initialize.Transports();
 
+Console.WriteLine();
 Console.WriteLine("Database initialization complete.");
