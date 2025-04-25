@@ -37,14 +37,11 @@ public class Position
     public static Position operator *(Position a, double b) => new(a.X * b, a.Y * b, a.Z * b);
     public static Position operator /(Position a, double b) => new(a.X / b, a.Y / b, a.Z / b);
     
-    public double Magnitude => Math.Sqrt(MagnitudeSquared);
-    public double MagnitudeSquared => X * X + Y * Y + Z * Z;
-    public Position Normalized
+    public double MagnitudeSquared() => X * X + Y * Y + Z * Z;
+    public double Magnitude() => Math.Sqrt(MagnitudeSquared());
+    public Position Normalized()
     {
-        get
-        {
-            double magnitude = Magnitude;
-            return new Position(X / magnitude, Y / magnitude, Z / magnitude);
-        }
+        double magnitude = Magnitude();
+        return new Position(X / magnitude, Y / magnitude, Z / magnitude);
     }
 }

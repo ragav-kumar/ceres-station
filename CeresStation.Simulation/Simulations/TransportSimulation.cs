@@ -36,7 +36,7 @@ public class TransportSimulation(ISimulationRandomizer randomizer) : ISimulation
         // We have v0. We have p0. We have t (forced to be 1). We want to compute p1 and v1.
         float v0 = transport.SpeedLastTick;
         float v1 = v0 + a;
-        Position direction = (nextWaypoint.Position - previousWaypoint.Position).Normalized;
+        Position direction = (nextWaypoint.Position - previousWaypoint.Position).Normalized();
         Position p0 = transport.Position;
         Position p1 = p0 + direction * (v0 + 0.5 * a);
         
@@ -57,7 +57,7 @@ public class TransportSimulation(ISimulationRandomizer randomizer) : ISimulation
         Position routeVector = nextWaypoint - previousWaypoint;
         Position currentVector = transportPosition - previousWaypoint;
 
-        double routeLengthSquared = routeVector.SquaredMagnitude();
+        double routeLengthSquared = routeVector.MagnitudeSquared();
         if (routeLengthSquared == 0)
         {
             return 0f;
