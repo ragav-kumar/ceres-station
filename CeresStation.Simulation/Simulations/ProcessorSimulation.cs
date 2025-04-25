@@ -11,6 +11,7 @@ public class ProcessorSimulation(ISimulationRandomizer randomizer) : ISimulation
     {
         foreach (Processor processor in ctx.Processors)
         {
+            LoadAndUnloadTransports(ctx, processor);
             ProgressTimeStep(processor);
         }
         
@@ -53,6 +54,54 @@ public class ProcessorSimulation(ISimulationRandomizer randomizer) : ISimulation
         foreach (Reagent output in processor.Outputs)
         {
             output.Stockpile += output.ProcessRate / processor.TimeStep;
+        }
+    }
+
+    private static void LoadAndUnloadTransports(StationContext ctx, Processor processor)
+    {
+        List<Transport> transports = ctx.GetTransportsAtEntity(processor);
+        foreach (Transport transport in transports)
+        {
+            UnloadInputs(processor, transport);
+            LoadOutputs(processor, transport);
+        }
+    }
+
+    private static void UnloadInputs(Processor processor, Transport transport)
+    {
+        foreach (Reagent input in processor.Inputs)
+        {
+            if (
+                transport.CargoTypeId != input.ResourceId ||
+                transport.Stockpile <= 0f ||
+                input.Stockpile >= input.Capacity
+            )
+            {
+                continue;
+            }
+
+            float amountToTransfer = MathF.Min(transport.Stockpile, input.Capacity - input.Stockpile);
+            transport.Stockpile -= amountToTransfer;
+            input.Stockpile += amountToTransfer;
+        }
+    }
+
+    private static void LoadOutputs(Processor processor, Transport transport)
+    {
+        foreach (Reagent output in processor.Inputs)
+        {
+            if (
+                transport.CargoTypeId != output.ResourceId ||
+                transport.Stockpile >= transport.Capacity ||
+                output.Stockpile <= 0f
+            )
+            {
+                continue;
+            }
+
+            float amountToTransfer = MathF.Min(transport.Capacity - transport.Stockpile, output.Stockpile);
+            transport.Stockpile += amountToTransfer;
+            output.Stockpile -= amountToTransfer;
         }
     }
 }

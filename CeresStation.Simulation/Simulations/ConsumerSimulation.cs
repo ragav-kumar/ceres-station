@@ -11,6 +11,7 @@ public class ConsumerSimulation(ISimulationRandomizer randomizer) : ISimulation
     {
         foreach (Consumer consumer in ctx.Consumers)
         {
+            UnloadTransports(ctx, consumer);
             ConsumeResources(consumer);
         }
         
@@ -28,5 +29,19 @@ public class ConsumerSimulation(ISimulationRandomizer randomizer) : ISimulation
         }
         
         consumer.Stockpile -= actualConsumption;
+    }
+
+    private static void UnloadTransports(StationContext ctx, Consumer consumer)
+    {
+        List<Transport> transports = ctx.GetTransportsAtEntity(consumer);
+        foreach (Transport transport in transports)
+        {
+            if (transport.CargoTypeId != consumer.ResourceId || transport.Stockpile <= 0 || consumer.Stockpile >= consumer.Capacity)
+                continue;
+            
+            float amountToTransfer = MathF.Min(consumer.Capacity - consumer.Stockpile, transport.Stockpile);
+            transport.Stockpile -= amountToTransfer;
+            consumer.Stockpile += amountToTransfer;
+        }
     }
 }

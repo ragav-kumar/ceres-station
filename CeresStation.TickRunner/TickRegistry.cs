@@ -40,7 +40,7 @@ public class TickRegistry
         {
             await simulation.TickAsync(ctx, cancellationToken);
         }
-            
+        
         await ctx.SaveChangesAsync(cancellationToken);
     }
 }

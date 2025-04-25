@@ -11,10 +11,29 @@ public class ExtractorSimulation(ISimulationRandomizer randomizer) : ISimulation
     {
         foreach (Extractor extractor in ctx.Extractors.Where(o => o.Stockpile < o.Capacity))
         {
+            LoadTransports(ctx, extractor);
             AddToStockPile(extractor);
         }
 
         return Task.CompletedTask;
+    }
+
+    private void LoadTransports(StationContext ctx, Extractor extractor)
+    {
+        List<Transport> transports = ctx.GetTransportsAtEntity(extractor);
+        foreach (Transport transport in transports)
+        {
+            if (extractor.Stockpile > 0)
+            {
+                float amountToLoad = MathF.Min(transport.Capacity - transport.Stockpile, extractor.Stockpile);
+                transport.Stockpile += amountToLoad;
+                extractor.Stockpile -= amountToLoad;
+            }
+            else
+            {
+                break;
+            }
+        }
     }
 
     private void AddToStockPile(Extractor extractor)
