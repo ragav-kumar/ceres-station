@@ -27,5 +27,9 @@ public class Position
         Z = position.Z;
     }
     
-    public static Position Origin => new(0, 0, 0); 
+    public static Position Origin => new(0, 0, 0);
+    
+    public static Position operator +(Position a, Position b) => new(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+    public static Position operator -(Position a, Position b) => new(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+    public static double operator *(Position a, Position b) => a.X * b.X + a.Y * b.Y + a.Z * b.Z;
 }

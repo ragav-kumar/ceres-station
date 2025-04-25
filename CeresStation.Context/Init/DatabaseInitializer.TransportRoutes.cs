@@ -31,9 +31,6 @@ internal partial class DatabaseInitializer
                 OrderIndex = index
             })
             .ToList();
-
-        // _ctx.Set<TransportRouteWaypoint>().AddRange(waypoints);
-        // await _ctx.SaveChangesAsync();
         
         _ctx.TransportRoutes.Add(new TransportRoute
         {

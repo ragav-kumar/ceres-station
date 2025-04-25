@@ -214,7 +214,7 @@
       <workItem from="1743871972819" duration="10778000" />
       <workItem from="1745167634552" duration="9255000" />
       <workItem from="1745461409081" duration="9852000" />
-      <workItem from="1745542145539" duration="2325000" />
+      <workItem from="1745542145539" duration="5674000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -296,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745471308749</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Finish transport route impl">
+      <option name="closed" value="true" />
+      <created>1745545577913</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1745545577913</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,26 +334,8 @@
     <MESSAGE value="clean up save changes" />
     <MESSAGE value="finished processor simulation" />
     <MESSAGE value="WIP - adding in Transport route waypoints" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP - adding in Transport route waypoints" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.TransportRoutes.cs</url>
-          <line>37</line>
-          <properties documentPath="C:\repos\ceres-station\CeresStation.Context\Init\DatabaseInitializer.TransportRoutes.cs" containingFunctionPresentation="Method 'AddTransportRoute'">
-            <startOffsets>
-              <option value="1978" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2134" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Finish transport route impl" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finish transport route impl" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
