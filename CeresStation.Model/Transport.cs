@@ -6,6 +6,7 @@ namespace CeresStation.Model;
 [SuppressMessage("ReSharper", "PropertyCanBeMadeInitOnly.Global")]
 public class Transport : EntityBase
 {
+    public float SpeedLastTick { get; set; }
     public required float Acceleration { get; set; }
     public required float StandardDeviation { get; set; }
     

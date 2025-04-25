@@ -214,7 +214,7 @@
       <workItem from="1743871972819" duration="10778000" />
       <workItem from="1745167634552" duration="9255000" />
       <workItem from="1745461409081" duration="9852000" />
-      <workItem from="1745542145539" duration="5674000" />
+      <workItem from="1745542145539" duration="7128000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -304,7 +304,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745545577913</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="WIP - transport movement logic">
+      <option name="closed" value="true" />
+      <created>1745548677400</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1745548677400</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -335,7 +343,8 @@
     <MESSAGE value="finished processor simulation" />
     <MESSAGE value="WIP - adding in Transport route waypoints" />
     <MESSAGE value="Finish transport route impl" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish transport route impl" />
+    <MESSAGE value="WIP - transport movement logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP - transport movement logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

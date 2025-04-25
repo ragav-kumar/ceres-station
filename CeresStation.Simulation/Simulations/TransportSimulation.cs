@@ -24,15 +24,32 @@ public class TransportSimulation(ISimulationRandomizer randomizer) : ISimulation
         EntityBase nextWaypoint = transport.Route.WaypointEntities[index];
         EntityBase previousWaypoint = transport.Route.WaypointEntities[previousIndex];
 
-        float actualAcceleration = randomizer.NextGaussian(transport.Acceleration, transport.StandardDeviation);
+        float a = randomizer.NextGaussian(transport.Acceleration, transport.StandardDeviation);
         // If more than 50% of way to next waypoint, decelerate.
         float progress = RouteProgress(transport.Position, previousWaypoint.Position, nextWaypoint.Position);
 
         if (progress >= 0.5f)
         {
-            actualAcceleration *= -1;
+            a *= -1;
         }
-        // TODO - finish the logic here
+        
+        // We have v0. We have p0. We have t (forced to be 1). We want to compute p1 and v1.
+        float v0 = transport.SpeedLastTick;
+        float v1 = v0 + a;
+        Position direction = (nextWaypoint.Position - previousWaypoint.Position).Normalized;
+        Position p0 = transport.Position;
+        Position p1 = p0 + direction * (v0 + 0.5 * a);
+        
+        // Recompute progress. If past target, set to target.
+        float nextProgress = RouteProgress(p1, previousWaypoint.Position, nextWaypoint.Position);
+        if (nextProgress > 1.0f)
+        {
+            p1 = nextWaypoint.Position;
+        }
+        
+        // Update
+        transport.SpeedLastTick = v1;
+        transport.Position = p1;
     }
 
     private float RouteProgress(Position transportPosition, Position previousWaypoint, Position nextWaypoint)
@@ -47,6 +64,6 @@ public class TransportSimulation(ISimulationRandomizer randomizer) : ISimulation
         }
 
         double dotProduct = currentVector * routeVector;
-        return (float)Math.Clamp(dotProduct / routeLengthSquared, 0, 1);
+        return (float)(dotProduct / routeLengthSquared);
     }
 }

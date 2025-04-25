@@ -8,4 +8,6 @@ public static class PositionExtensions
         position.X * position.X +
         position.Y * position.Y +
         position.Z * position.Z;
+    
+    
 }
