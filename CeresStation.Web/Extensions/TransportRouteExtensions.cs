@@ -11,7 +11,7 @@ internal static class TransportRouteExtensions
         Waypoints: transportRoute.Waypoints.ToDto().ToList()
     );
 
-    internal static EntityDto ToDto(this TransportRouteWaypoint waypoint) => waypoint.Waypoint.ToDto();
+    internal static EntityDto ToDto(this TransportRouteWaypoint waypoint) => waypoint.Entity.ToDto();
 
     internal static IEnumerable<EntityDto> ToDto(this IEnumerable<TransportRouteWaypoint> waypoints) => waypoints.Select(ToDto);
 }

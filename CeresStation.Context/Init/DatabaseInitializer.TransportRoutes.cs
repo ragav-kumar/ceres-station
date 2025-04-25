@@ -23,18 +23,23 @@ internal partial class DatabaseInitializer
     {
         Console.WriteLine($"Adding transport route: {routeName}");
 
+        List<TransportRouteWaypoint> waypoints = waypointIds
+            .Select((id, index) => new TransportRouteWaypoint
+            {
+                RouteId = routeId,
+                EntityId = id,
+                OrderIndex = index
+            })
+            .ToList();
+
+        // _ctx.Set<TransportRouteWaypoint>().AddRange(waypoints);
+        // await _ctx.SaveChangesAsync();
+        
         _ctx.TransportRoutes.Add(new TransportRoute
         {
             Id = routeId,
             Name = routeName,
-            Waypoints = waypointIds
-                .Select((id, index) => new TransportRouteWaypoint
-                {
-                    RouteId = routeId,
-                    WaypointId = id,
-                    OrderIndex = index
-                })
-                .ToList(),
+            Waypoints = waypoints,
         });
         await _ctx.SaveChangesAsync();
     }

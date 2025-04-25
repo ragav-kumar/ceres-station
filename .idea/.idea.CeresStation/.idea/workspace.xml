@@ -64,9 +64,11 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2fb4ce5c5d48d4171f81a8112b65aa49196f0048576d4c9c280de41e6ff44/ConfigurationBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bd1d5c50194fea68ff3559c160230b0ab50f5acf4ce3061bffd6d62958e2182/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ce37be1a06b16c6faa02038d2cc477dd3bca5b217ceeb41c5f2ad45c1bf9/ServiceProvider.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dd6c73164669d1ec65499e7c8e9b99d6226395deda5230fc20ae28a332b2acc7/Mutex.Windows.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/de533de9e7b3ea79d36aeac96b6426559cfe9f3a96b1ab66b51ce3febeda25f/TimeSpan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e236b3163462f9f3c28dda0a52bc1f5ad052312cec3f621b92f8699fcd6243/EntityGraphAttacher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e9881a453a581134c1a18331ac1f8f1201a5382a685bf2a40777fa22619/DbContextOptions`.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f4fea0d1211378df8498212882515b365921d28ffed32bc4ffe5fcdf17d140/ConcurrentBag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CeresStation.Simulation/Simulations/ExtractorSimulation.cs" root0="FORCE_HIGHLIGHTING" />
@@ -90,7 +92,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.CeresStation.Web: http.executor": "Run",
-    ".NET Project.CeresStation.Context.executor": "Debug",
+    ".NET Project.CeresStation.Context.executor": "Run",
     ".NET Project.CeresStation.TickRunner.executor": "Debug",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -211,7 +213,8 @@
       <workItem from="1743825397188" duration="2852000" />
       <workItem from="1743871972819" duration="10778000" />
       <workItem from="1745167634552" duration="9255000" />
-      <workItem from="1745461409081" duration="9742000" />
+      <workItem from="1745461409081" duration="9852000" />
+      <workItem from="1745542145539" duration="2325000" />
     </task>
     <task id="LOCAL-00001" summary="Use specific DbSet when adding or removing">
       <option name="closed" value="true" />
@@ -285,7 +288,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745176276416</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="WIP - adding in Transport route waypoints">
+      <option name="closed" value="true" />
+      <created>1745471308749</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1745471308749</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,23 +325,24 @@
     <MESSAGE value="First place implementation of TickRunner" />
     <MESSAGE value="clean up save changes" />
     <MESSAGE value="finished processor simulation" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished processor simulation" />
+    <MESSAGE value="WIP - adding in Transport route waypoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP - adding in Transport route waypoints" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/CeresStation.Context/Init/DatabaseInitializer.TransportRoutes.cs</url>
-          <line>25</line>
+          <line>37</line>
           <properties documentPath="C:\repos\ceres-station\CeresStation.Context\Init\DatabaseInitializer.TransportRoutes.cs" containingFunctionPresentation="Method 'AddTransportRoute'">
             <startOffsets>
-              <option value="1583" />
+              <option value="1978" />
             </startOffsets>
             <endOffsets>
-              <option value="1985" />
+              <option value="2134" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -13,7 +13,7 @@ public class TransportRouteConfiguration: IEntityTypeConfiguration<TransportRout
         builder
             .HasMany(o => o.Waypoints)
             .WithOne()
-            .HasForeignKey(o => o.WaypointId)
+            .HasForeignKey(o => o.RouteId)
             .OnDelete(DeleteBehavior.Cascade);
     }
 }

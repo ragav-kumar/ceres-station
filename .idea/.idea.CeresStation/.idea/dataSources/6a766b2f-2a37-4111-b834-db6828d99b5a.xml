@@ -499,7 +499,7 @@
     <routine id="190" parent="1" name="fts5"/>
     <schema id="191" parent="1" name="main">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-04-24.05:06:58</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-04-25.01:34:30</LastIntrospectionLocalTimestamp>
     </schema>
     <argument id="192" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1983,94 +1983,80 @@ DefinitionId</ColNames>
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="647" parent="562" name="WaypointId">
+    <column id="647" parent="562" name="EntityId">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="648" parent="562" name="WaypointId1">
+    <column id="648" parent="562" name="OrderIndex">
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StoredType>TEXT|0s</StoredType>
-    </column>
-    <column id="649" parent="562" name="OrderIndex">
-      <NotNull>1</NotNull>
-      <Position>4</Position>
       <StoredType>INTEGER|0s</StoredType>
     </column>
-    <foreign-key id="650" parent="562" name="FK_TransportRouteWaypoint_TransportRoutes_RouteId">
+    <foreign-key id="649" parent="562" name="FK_TransportRouteWaypoint_TransportRoutes_RouteId">
       <ColNames>RouteId</ColNames>
-      <OnDelete>cascade</OnDelete>
+      <OnDelete>restrict</OnDelete>
       <RefColNames>Id</RefColNames>
       <RefTableName>TransportRoutes</RefTableName>
     </foreign-key>
-    <foreign-key id="651" parent="562" name="FK_TransportRouteWaypoint_TransportRoutes_WaypointId">
-      <ColNames>WaypointId</ColNames>
-      <OnDelete>cascade</OnDelete>
-      <RefColNames>Id</RefColNames>
-      <RefTableName>TransportRoutes</RefTableName>
-    </foreign-key>
-    <foreign-key id="652" parent="562" name="FK_TransportRouteWaypoint_Entities_WaypointId1">
-      <ColNames>WaypointId1</ColNames>
-      <OnDelete>cascade</OnDelete>
+    <foreign-key id="650" parent="562" name="FK_TransportRouteWaypoint_Entities_EntityId">
+      <ColNames>EntityId</ColNames>
+      <OnDelete>restrict</OnDelete>
       <RefColNames>Id</RefColNames>
       <RefTableName>Entities</RefTableName>
     </foreign-key>
-    <index id="653" parent="562" name="sqlite_autoindex_TransportRouteWaypoint_1">
-      <ColNames>WaypointId
-RouteId</ColNames>
+    <index id="651" parent="562" name="sqlite_autoindex_TransportRouteWaypoint_1">
+      <ColNames>RouteId
+EntityId</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <index id="654" parent="562" name="IX_TransportRouteWaypoint_RouteId">
-      <ColNames>RouteId</ColNames>
+    <index id="652" parent="562" name="IX_TransportRouteWaypoint_EntityId">
+      <ColNames>EntityId</ColNames>
     </index>
-    <index id="655" parent="562" name="IX_TransportRouteWaypoint_WaypointId1">
-      <ColNames>WaypointId1</ColNames>
-    </index>
-    <key id="656" parent="562" name="PK_TransportRouteWaypoint">
-      <ColNames>WaypointId
-RouteId</ColNames>
+    <key id="653" parent="562" name="PK_TransportRouteWaypoint">
+      <ColNames>RouteId
+EntityId</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_TransportRouteWaypoint_1</UnderlyingIndexName>
     </key>
-    <column id="657" parent="563" name="Id">
+    <column id="654" parent="563" name="Id">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="658" parent="563" name="Name">
+    <column id="655" parent="563" name="Name">
       <NotNull>1</NotNull>
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <index id="659" parent="563" name="sqlite_autoindex_TransportRoutes_1">
+    <index id="656" parent="563" name="sqlite_autoindex_TransportRoutes_1">
       <ColNames>Id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <Unique>1</Unique>
     </index>
-    <key id="660" parent="563" name="PK_TransportRoutes">
+    <key id="657" parent="563" name="PK_TransportRoutes">
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>sqlite_autoindex_TransportRoutes_1</UnderlyingIndexName>
     </key>
-    <column id="661" parent="564" name="type">
+    <column id="658" parent="564" name="type">
       <Position>1</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="662" parent="564" name="name">
+    <column id="659" parent="564" name="name">
       <Position>2</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="663" parent="564" name="tbl_name">
+    <column id="660" parent="564" name="tbl_name">
       <Position>3</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>
-    <column id="664" parent="564" name="rootpage">
+    <column id="661" parent="564" name="rootpage">
       <Position>4</Position>
       <StoredType>INT|0s</StoredType>
     </column>
-    <column id="665" parent="564" name="sql">
+    <column id="662" parent="564" name="sql">
       <Position>5</Position>
       <StoredType>TEXT|0s</StoredType>
     </column>

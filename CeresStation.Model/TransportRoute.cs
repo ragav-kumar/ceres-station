@@ -20,6 +20,6 @@ public class TransportRoute
     [NotMapped]
     public List<EntityBase> WaypointEntities => Waypoints
         .OrderBy(o => o.OrderIndex)
-        .Select(o => o.Waypoint)
+        .Select(o => o.Entity)
         .ToList() ?? [];
 }

@@ -44,6 +44,7 @@ public class StationContext : DbContext
                 .UseSqlite(_connectionString, o => o.UseQuerySplittingBehavior(QuerySplittingBehavior.SplitQuery))
                 .UseLazyLoadingProxies()
                 .ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning));
+            //.EnableSensitiveDataLogging();
         }
     }
 
