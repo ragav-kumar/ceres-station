@@ -1,5 +1,6 @@
 using CeresStation.Context;
 using CeresStation.GraphQl;
+using CeresStation.Web;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Path = System.IO.Path;
@@ -40,6 +41,9 @@ builder.Services
     .AddGraphQLServer()
     .AddCeresStationGraphQl();
 
+builder.Services
+    .AddSignalR();
+
 WebApplication app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -53,5 +57,6 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 app.UseCors(myAllowSpecificOrigins);
 app.MapControllers();
+app.MapHub<EventHub>("/events");
 
 app.Run();
